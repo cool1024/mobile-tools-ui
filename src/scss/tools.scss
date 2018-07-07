@@ -16,3 +16,100 @@
         color: $color;
     }
 }
+
+//
+// text-overflow
+//
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+//
+// space
+//
+@each $number, $space in $spacers {
+    .p-#{$number} {
+        padding: $space;
+    }
+
+    @each $key, $value in $rltb {
+        .p#{$key}-#{$number} {
+            padding-#{$value}: $space;
+        }
+    }
+
+    .m-#{$number} {
+        margin: $space;
+    }
+
+    @each $key, $value in $rltb {
+        .m#{$key}-#{$number} {
+            margin-#{$value}: $space;
+        }
+    }
+}
+
+//
+// border radius
+//
+.round {
+    border-radius: $border-radius;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+//
+// size
+//
+@each $value in $sizes {
+    .w-#{$value} {
+        width: #{$value + "%"};
+    }
+}
+
+//
+// flex
+//
+.flex {
+    display: flex;
+}
+
+.flex-around {
+    @extend .flex;
+
+    justify-content: space-around;
+}
+
+.flex-between {
+    @extend .flex;
+
+    justify-content: space-between;
+}
+
+.flex-start {
+    @extend .flex;
+
+    justify-content: start;
+}
+
+.flex-end {
+    @extend .flex;
+
+    justify-content: end;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}

@@ -21,11 +21,29 @@ $btn-enable-shadow: $enable-shadow;
 }
 
 .btn:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .btn:active {
-    opacity: 0.6;
+    opacity: 0.4;
+}
+
+.btn-text {
+    border: none;
+    padding: map-get($map: $spacers, $key: 2);
+    background-color: transparent;
+}
+
+.btn-text:hover {
+    @extend .btn:hover;
+}
+
+.btn-text:active {
+    @extend .btn:active;
+}
+
+.btn-text.active {
+    @extend .btn-text:active;
 }
 
 @each $name, $color in $btn-colors {

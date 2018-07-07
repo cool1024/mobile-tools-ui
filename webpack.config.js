@@ -11,6 +11,9 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
     entry: {
         index: __dirname + '/src/index.ts',
+        card: __dirname + '/src/pages/card/card.ts',
+        image: __dirname + '/src/pages/image/image.ts',
+        button: __dirname + '/src/pages/button/button.ts',
     },
     output: {
         path: __dirname + '/build',

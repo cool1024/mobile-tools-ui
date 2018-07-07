@@ -22,6 +22,7 @@ $white: #fff;
 $light: $gray-200;
 $dark: #000;
 $muted: $gray-500;
+$gray: $gray-800;
 
 // main color
 $primary: #007bff;
@@ -37,9 +38,9 @@ $orange: #fd7e14;
 //
 // color array
 //
-$colors: map-merge(("white": $white, "light": $light, "muted": $muted, "dark": $dark), ());
+$colors: map-merge(("white": $white, "light": $light, "muted": $muted, "gray": $gray, "dark": $dark), ());
 $main-colors: ("primary": $primary, "info": $info, "danger": $danger, "warning": $warning, "success": $success);
-$btn-colors: ("white": $white, "dark": $dark);
+$btn-colors: ("white": $white, "dark": $dark, "danger": $danger, "warning": $warning, "success": $success);
 
 $bg-colors: map-merge((), $colors);
 
@@ -51,10 +52,18 @@ $text-colors: map-merge($main-colors, $colors);
 $yiq-contrasted-threshold: 150 !default;
 
 //
+// r-l-t-b
+//
+$rltb: ("r": "right", "l": "left", "t": "top", "b": "bottom");
+
+//
 // space
 //
 $spacer: 1rem;
-$spacers: map-merge((0: 0, 1: $spacer * 0.25, 2: $spacer * 0.5, 3: $spacer, 4: $spacer * 1.5, 5: $spacer * 2), ());
+$spacers: map-merge(("none": 0 !important, 0: 0 !important, 1: $spacer * 0.25, 2: $spacer * 0.5, 3: $spacer, 4: $spacer * 1.5, 5: $spacer * 2), ());
+
+// size leves
+$sizes: 50, 100;
 
 //
 // radius
@@ -74,6 +83,8 @@ $font-weight-lg: $font-weight + 100;
 
 $font-normal: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-other: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+$line-height: 1.4;
 
 //
 // shadow
