@@ -1,0 +1,36 @@
+//
+// button config
+//
+$btn-enable-radius: $enable-radius;
+$btn-enable-shadow: $enable-shadow;
+
+//
+// scss content
+//
+.btn {
+    border: none;
+    padding: map-get($map: $spacers, $key: 2);
+
+    @if $btn-enable-radius {
+        border-radius: $border-radius;
+    }
+
+    @if $btn-enable-shadow {
+        box-shadow: $box-shadow-sm;
+    }
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn:active {
+    opacity: 0.6;
+}
+
+@each $name, $color in $btn-colors {
+    .btn-#{$name} {
+        background-color: $color;
+        color: color-yiq($color);
+    }
+}

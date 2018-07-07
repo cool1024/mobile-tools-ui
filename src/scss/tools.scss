@@ -1,0 +1,18 @@
+//
+// backgournd-color
+//
+@each $name, $color in $bg-colors {
+    .bg-#{$name} {
+        background-color: $color;
+        color: color-yiq($color);
+    }
+}
+
+//
+// text-color
+//
+@each $name, $color in $text-colors {
+    .text-#{$name} {
+        color: $color;
+    }
+}

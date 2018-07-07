@@ -1,0 +1,29 @@
+//
+// button config
+//
+$card-enable-radius: $enable-radius;
+$card-enable-shadow: $enable-shadow;
+
+.card {
+    background-color: $white;
+    padding: map-get($spacers, 2);
+
+    @if $card-enable-radius {
+        border-radius: $border-radius;
+    }
+
+    @if $card-enable-shadow {
+        box-shadow: $box-shadow;
+    }
+}
+
+.card-media {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.card-media-thumb {}
+
+.card-media-content {
+    flex-grow: 1;
+}
