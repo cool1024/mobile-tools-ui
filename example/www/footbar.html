@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MobileToolsUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="index.css">
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div class="view">
+        <div class="view-headbar view-headbar-fixed bg-white">
+            <div class="btn-text">
+                <svg class="icon bar-icon font-size-lg" aria-hidden="true">
+                    <use xlink:href="#icon-back"></use>
+                </svg>
+            </div>
+            <h4 class="headbar-title text-center">头部标题</h4>
+            <div class="btn-text">
+                <svg class="icon bar-icon font-size-lg" aria-hidden="true">
+                    <use xlink:href="#icon-More"></use>
+                </svg>
+            </div>
+        </div>
+        <div class="view-content line-height-normal">
+            <div>
+                <button class="btn btn-danger" target="gray-coloful">gray-coloful</button>
+                <button class="btn btn-warning" target="gray-color">gray-color</button>
+            </div>
+            <p>
+                Ionic apps are made of high-level building blocks called components. Components allow you to quickly construct an interface
+                for your app. Ionic comes with a number of components, including modals, popups, and cards. Check out the
+                examples below to see what each component looks like and to learn how to use each one. Once you’re familiar
+                with the basics, head over to the API docs for ideas on how to customize each component.
+            </p>
+            <p>
+                Tabs powers a multi-tabbed interface with a Tab Bar and a set of views that can be tabbed through.
+            </p>
+            <p>
+                Action Sheets slide up from the bottom edge of the device screen, and display a set of options with the ability to confirm
+                or cancel an action. Action Sheets can sometimes be used as an alternative to menus, however, they should
+                not be used for navigation.
+            </p>
+        </div>
+        <!--icon color-->
+        <div id="gray-colorful" class="view-footbar view-footbar-gray">
+            <button class="btn-text text-danger bar-item active" type="button">
+                <svg class="icon bar-icon" aria-hidden="true">
+                    <use xlink:href="#icon-bangbangtang"></use>
+                </svg>
+                <div class="bar-label">lollipop</div>
+            </button>
+            <button class="btn-text text-warning bar-item" type="button">
+                <svg class="icon bar-icon" aria-hidden="true">
+                    <use xlink:href="#icon-ningmeng"></use>
+                </svg>
+                <div class="bar-label">lemon</div>
+            </button>
+            <button class="btn-text text-success bar-item" type="button">
+                <svg class="icon bar-icon" aria-hidden="true">
+                    <use xlink:href="#icon-qingpingguo"></use>
+                </svg>
+                <div class="bar-label">apple</div>
+            </button>
+        </div>
+        <!--font color-->
+        <div id="gray-color" class="view-footbar view-footbar-gray">
+            <button class="btn-text text-danger bar-item active" type="button">
+                <svg class="icon bar-icon" aria-hidden="true">
+                    <use xlink:href="#icon-address"></use>
+                </svg>
+                <div class="bar-label">address</div>
+            </button>
+            <button class="btn-text text-danger bar-item" type="button">
+                <svg class="icon bar-icon" aria-hidden="true">
+                    <use xlink:href="#icon-time"></use>
+                </svg>
+                <div class="bar-label">time</div>
+            </button>
+            <button class="btn-text text-danger bar-item" type="button">
+                <svg class="icon bar-icon" aria-hidden="true">
+                    <use xlink:href="#icon-book"></use>
+                </svg>
+                <div class="bar-label">book</div>
+            </button>
+            <button class="btn-text text-danger bar-item" type="button">
+                <svg class="icon bar-icon" aria-hidden="true">
+                    <use xlink:href="#icon-color"></use>
+                </svg>
+                <div class="bar-label">color</div>
+            </button>
+        </div>
+    </div>
+</body>
+<script src="source/js/jquery-slim.min.js"></script>
+<script src="footbar.js"></script>
+<script src="source/fonts/iconfont.js"></script>
+
+</html>
