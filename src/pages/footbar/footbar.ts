@@ -24,6 +24,7 @@ class FootbarController extends PageServiceController {
                 btn.className += ' active';
             }
         });
+        $('#gray-color').hide();
     }
 
     fillView() {

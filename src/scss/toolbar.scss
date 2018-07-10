@@ -15,17 +15,20 @@ $footbar-label-size: $font-size * 0.8;
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .view-content {
-    height: calc(100% - #{$footbar-height});
-    padding: map-get($spacers, 2);
     overflow-x: hidden;
     overflow-y: auto;
+    flex-grow: 1;
 }
 
 .view-headbar {
-    height: $footbar-height;
+    height: $headbar-height;
+    min-height: $headbar-height;
+    max-height: $headbar-height;
     display: flex;
     user-select: none;
 
@@ -34,25 +37,18 @@ $footbar-label-size: $font-size * 0.8;
     }
 }
 
-.view-headbar-fixed {
-    position: fixed;
-    width: 100%;
-}
-
-.view-headbar-fixed > * {
+.view-headbar > * {
     align-self: center;
 }
 
-.view-headbar-fixed .headbar-title {
+.view-headbar .headbar-title {
     flex-grow: 1;
-}
-
-.view-headbar-fixed ~ .view-content {
-    padding-top: $headbar-height + map-get($spacers, 2);
 }
 
 .view-footbar {
     height: $footbar-height;
+    min-height: $footbar-height;
+    max-height: $footbar-height;
 
     @if $footbar-shadow-enable {
         box-shadow: $box-shadow-reverse-sm;
