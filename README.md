@@ -14,3 +14,6 @@ A tool ui for mobile.
 
 ## build
 `npm run build-prod`
+
+## example
+A example for cordova,can run as an android or ios app

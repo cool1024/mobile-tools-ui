@@ -146,6 +146,12 @@
     justify-content: end;
 }
 
+.flex-center {
+    @extend .flex;
+
+    justify-content: center;
+}
+
 .flex-wrap {
     flex-wrap: wrap;
 }
@@ -156,4 +162,24 @@
 
 .flex-wrap-reverse {
     flex-wrap: wrap-reverse;
+}
+
+.align-content-start {
+    align-content: flex-start;
+}
+
+.align-content-end {
+    align-content: flex-end;
+}
+
+.align-content-center {
+    align-content: center;
+}
+
+.align-content-between {
+    align-content: space-between;
+}
+
+.align-content-around {
+    align-content: space-around;
 }
