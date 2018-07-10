@@ -15,6 +15,7 @@ module.exports = {
         image: __dirname + '/src/pages/image/image.ts',
         button: __dirname + '/src/pages/button/button.ts',
         footbar: __dirname + '/src/pages/footbar/footbar.ts',
+        alert: __dirname + '/src/pages/alert/alert.ts',
     },
     output: {
         path: __dirname + '/build',

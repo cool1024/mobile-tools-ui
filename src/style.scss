@@ -6,3 +6,57 @@
 @import "scss/card";
 @import "scss/image";
 @import "scss/toolbar";
+
+//
+// animate.css
+//
+// @import "~animate.css/source/base";
+.animated {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.animated.infinite {
+    animation-iteration-count: infinite;
+}
+
+@import "~animate.css/source/zooming_entrances/zoomInUp";
+
+.alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    background-color: rgba($dark, 0.4);
+}
+
+.alert.active {
+    display: flex;
+}
+
+.alert-dialog {
+    @extend .animated;
+
+    @extend .zoomInUp;
+
+    align-self: center;
+    width: 80%;
+    box-shadow: $box-shadow;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: map-get($spacers, 2);
+    }
+}
+
+.alert-content {
+    line-height: $line-height;
+}
+
+.alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: map-get($spacers, 3);
+}

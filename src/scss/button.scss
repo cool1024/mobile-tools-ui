@@ -9,7 +9,7 @@ $btn-enable-shadow: $enable-shadow;
 //
 .btn {
     border: none;
-    padding: map-get($map: $spacers, $key: 2);
+    padding: map-get($spacers, 2);
 
     @if $btn-enable-radius {
         border-radius: $border-radius;
@@ -30,7 +30,7 @@ $btn-enable-shadow: $enable-shadow;
 
 .btn-text {
     border: none;
-    padding: map-get($map: $spacers, $key: 2);
+    padding: map-get($spacers, 2);
     background-color: transparent;
 }
 
