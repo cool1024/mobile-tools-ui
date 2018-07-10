@@ -20,7 +20,9 @@ class CardController extends PageServiceController {
     getCardMediaStr(card: Card): string {
         return `
         <div class="card card-media mb-2">
-            <img class="card-media-thumb" src="${card.cardImage}">
+            <div class="card-media-thumb">
+                <img class="w-100 h-100" src="${card.cardImage}">
+            </div>
             <div class="card-media-content">
                 <h4 class="text-truncate">${card.cardTitle}</h4>
                 <div class="text-gray text-truncate">${card.cardSubject}</div>

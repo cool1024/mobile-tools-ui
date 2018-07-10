@@ -42,7 +42,7 @@ $colors: map-merge(("white": $white, "light": $light, "muted": $muted, "gray": $
 $main-colors: ("primary": $primary, "info": $info, "danger": $danger, "warning": $warning, "success": $success);
 $btn-colors: ("white": $white, "dark": $dark, "danger": $danger, "warning": $warning, "success": $success);
 
-$bg-colors: map-merge((), $colors);
+$bg-colors: map-merge(("pink": $pink), $colors);
 
 $text-colors: map-merge($main-colors, $colors);
 
@@ -63,7 +63,7 @@ $spacer: 1rem;
 $spacers: map-merge(("none": 0 !important, 0: 0 !important, 1: $spacer * 0.25, 2: $spacer * 0.5, 3: $spacer, 4: $spacer * 1.5, 5: $spacer * 2), ());
 
 // size leves
-$sizes: 50, 100;
+$sizes: 50, 100, auto;
 
 //
 // radius
@@ -75,7 +75,7 @@ $border-radius: 0.25rem;
 //
 $font-size: 1rem;
 $font-size-sm: $font-size * 0.8;
-$font-size-lg: $font-size * 1.2;
+$font-size-lg: $font-size * 1.5;
 
 $font-weight: 300;
 $font-weight-sm: $font-weight - 100;
@@ -92,3 +92,6 @@ $line-height: 1.4;
 $box-shadow: 0 0.5rem 1rem rgba($dark, 0.15);
 $box-shadow-sm: 0 0.125rem 0.25rem rgba($dark, 0.075);
 $box-shadow-lg: 0 1rem 3rem rgba($dark, 0.175);
+$box-shadow-reverse: 0 -0.5rem 1rem rgba($dark, 0.15);
+$box-shadow-reverse-sm: 0 -0.125rem 0.25rem rgba($dark, 0.075);
+$box-shadow-reverse-lg: 0 -1rem 3rem rgba($dark, 0.175);

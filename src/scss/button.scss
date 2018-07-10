@@ -42,10 +42,6 @@ $btn-enable-shadow: $enable-shadow;
     @extend .btn:active;
 }
 
-.btn-text.active {
-    @extend .btn-text:active;
-}
-
 @each $name, $color in $btn-colors {
     .btn-#{$name} {
         background-color: $color;

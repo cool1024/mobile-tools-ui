@@ -14,6 +14,7 @@ module.exports = {
         card: __dirname + '/src/pages/card/card.ts',
         image: __dirname + '/src/pages/image/image.ts',
         button: __dirname + '/src/pages/button/button.ts',
+        footbar: __dirname + '/src/pages/footbar/footbar.ts',
     },
     output: {
         path: __dirname + '/build',

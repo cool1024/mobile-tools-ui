@@ -15,6 +15,10 @@
     .text-#{$name} {
         color: $color;
     }
+
+    .text-indent {
+        text-indent: $font-size * 2;
+    }
 }
 
 //
@@ -24,6 +28,42 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.line-height-normal {
+    line-height: 1.5;
+}
+
+.line-height-sm {
+    line-height: 1;
+}
+
+.line-height-lg {
+    line-height: 2;
+}
+
+.font-size-normal {
+    font-size: $font-size;
+}
+
+.font-size-sm {
+    font-size: $font-size-sm;
+}
+
+.font-size-lg {
+    font-size: $font-size-lg;
 }
 
 //
@@ -68,6 +108,10 @@
 @each $value in $sizes {
     .w-#{$value} {
         width: #{$value + "%"};
+    }
+
+    .h-#{$value} {
+        height: #{$value + "%"};
     }
 }
 

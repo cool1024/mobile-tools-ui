@@ -2,6 +2,7 @@
     font-size: $font-size;
     font-weight: $font-weight;
     font-family: $font-normal;
+    box-sizing: border-box;
 }
 
 a::-moz-focus-inner, button::-moz-focus-inner {
@@ -47,6 +48,7 @@ a:visited {
 h1, h2, h3, h4, h5, h6 {
     margin-top: map-get($spacers, 3);
     margin-bottom: map-get($spacers, 3);
+    font-weight: $font-weight-lg;
 }
 
 h6 {

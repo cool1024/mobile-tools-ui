@@ -1,0 +1,88 @@
+//
+// headbar and footbar config
+//
+$headbar-height: 3.8rem;
+$headbar-shadow-enable: true;
+
+$footbar-height: $headbar-height;
+$footbar-shadow-enable: $headbar-shadow-enable;
+$footbar-icon-size: $font-size * 1.8;
+$footbar-label-size: $font-size * 0.8;
+
+.view {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.view-content {
+    height: calc(100% - #{$footbar-height});
+    padding: map-get($spacers, 2);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.view-headbar {
+    height: $footbar-height;
+    display: flex;
+    user-select: none;
+
+    @if $headbar-shadow-enable {
+        box-shadow: $box-shadow-sm;
+    }
+}
+
+.view-headbar-fixed {
+    position: fixed;
+    width: 100%;
+}
+
+.view-headbar-fixed > * {
+    align-self: center;
+}
+
+.view-headbar-fixed .headbar-title {
+    flex-grow: 1;
+}
+
+.view-headbar-fixed ~ .view-content {
+    padding-top: $headbar-height + map-get($spacers, 2);
+}
+
+.view-footbar {
+    height: $footbar-height;
+
+    @if $footbar-shadow-enable {
+        box-shadow: $box-shadow-reverse-sm;
+    }
+
+    @extend .flex-around;
+}
+
+.view-footbar {
+    .bar-item {
+        flex-grow: 1;
+        align-self: center;
+    }
+
+    .bar-icon {
+        font-size: $footbar-icon-size;
+    }
+
+    .bar-label {
+        font-size: $footbar-label-size;
+        margin-top: map-get($spacers, 1);
+    }
+}
+
+.view-footbar-gray {
+    .bar-item {
+        filter: grayscale(100%);
+    }
+
+    .bar-item.active {
+        filter: grayscale(0%) !important;
+    }
+}
