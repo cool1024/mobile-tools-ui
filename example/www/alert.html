@@ -26,7 +26,7 @@
                     <use xlink:href="#icon-back"></use>
                 </svg>
             </a>
-            <h4 class="headbar-title text-center">Button</h4>
+            <h4 class="headbar-title text-center">Alert</h4>
             <div class="btn-text invisable">
                 <svg class="icon bar-icon font-size-lg" aria-hidden="true">
                     <use xlink:href="#icon-back"></use>
@@ -34,21 +34,24 @@
             </div>
         </div>
         <div class="view-content p-2">
-            <div class="card card-block">
-                <h3>Example</h3>
-                <div>
-                    <button class="btn btn-white mb-2">White</button>
-                    <button class="btn btn-dark mb-2">Dark</button>
-                    <button class="btn btn-danger mb-2">Danger</button>
-                    <button class="btn btn-success mb-2">Success</button>
-                    <button class="btn btn-warning mb-2">Warning</button>
-                </div>
+            <button class="btn btn-success w-100" target="alert-open">Show</button>
+        </div>
+    </div>
+    <div class="alert">
+        <div class="alert-dialog bg-white p-4">
+            <h4 class="alert-header">Use this lightsaber?</h4>
+            <div class="alert-content text-muted">
+                Do you agree to use this lightsaber to do good across the intergalactic galaxy?
+            </div>
+            <div class="alert-footer">
+                <div class="btn-text" target="alert-close">取消</div>
+                <div class="btn-text text-success" target="alert-close">确认</div>
             </div>
         </div>
     </div>
 </body>
 <script src="source/js/jquery-slim.min.js"></script>
-<script src="button.js"></script>
+<script src="alert.js"></script>
 <script src="source/fonts/iconfont.js"></script>
 
 </html>
