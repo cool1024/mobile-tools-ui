@@ -60,3 +60,55 @@
     justify-content: flex-end;
     margin-top: map-get($spacers, 3);
 }
+
+//
+// tab
+//
+.tab {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab .tab-item {
+    text-align: center;
+    align-self: center;
+    flex-grow: 1;
+    padding-bottom: map-get($spacers, 3);
+    padding-top: map-get($spacers, 3);
+    border-bottom: 2px solid $gray-100;
+}
+
+.tab .tab-item.active {
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+.popup {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($dark, 0.4);
+}
+
+.popup-content {
+    align-self: flex-end;
+    width: 100%;
+}
+
+.popup-title {
+    position: relative;
+}
+
+.popup-close {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    display: flex;
+}
+
+.popup-close > * {
+    align-self: center;
+}

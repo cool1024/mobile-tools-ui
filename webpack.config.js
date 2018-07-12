@@ -16,6 +16,7 @@ module.exports = {
         button: __dirname + '/src/pages/button/button.ts',
         footbar: __dirname + '/src/pages/footbar/footbar.ts',
         alert: __dirname + '/src/pages/alert/alert.ts',
+        tab: __dirname + '/src/pages/tab/tab.ts',
     },
     output: {
         path: __dirname + '/build',
