@@ -94,6 +94,10 @@
 }
 
 .popup-content {
+    @extend .animated;
+
+    @extend .zoomInUp;
+
     align-self: flex-end;
     width: 100%;
 }
