@@ -41,7 +41,7 @@ $orange: #fd7e14;
 $colors: map-merge(("white": $white, "light": $light, "muted": $muted, "gray": $gray, "dark": $dark), ());
 $main-colors: ("primary": $primary, "info": $info, "danger": $danger, "warning": $warning, "success": $success);
 $btn-colors: ("white": $white, "dark": $dark, "danger": $danger, "warning": $warning, "success": $success);
-
+$checkbox-colors: $btn-colors;
 $bg-colors: map-merge(("pink": $pink), $colors);
 
 $text-colors: map-merge($main-colors, $colors);

@@ -20,7 +20,7 @@
     animation-iteration-count: infinite;
 }
 
-@import "~animate.css/source/zooming_entrances/zoomInUp";
+@import "~animate.css/source/sliding_entrances/slideInUp";
 
 .alert {
     position: fixed;
@@ -40,7 +40,7 @@
 .alert-dialog {
     @extend .animated;
 
-    @extend .zoomInUp;
+    @extend .slideInUp;
 
     align-self: center;
     width: 80%;
@@ -96,7 +96,7 @@
 .popup-content {
     @extend .animated;
 
-    @extend .zoomInUp;
+    @extend .slideInUp;
 
     align-self: flex-end;
     width: 100%;
@@ -115,4 +115,75 @@
 
 .popup-close > * {
     align-self: center;
+}
+
+//
+// checkbox
+//
+.checkbox,
+.radio {
+    position: relative;
+    height: 22px;
+}
+
+.checkbox input[type='checkbox'],
+.radio input[type='radio'] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+.checkbox label,
+.radio label {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    height: 22px;
+    line-height: 22px;
+}
+
+.checkbox label:before,
+.radio label:before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+}
+
+.radio label:before {
+    border-radius: 50%;
+}
+
+.checkbox label:after,
+.radio label:after {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: 0;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+    transform: rotate(45deg);
+}
+
+@each $name, $color in $checkbox-colors {
+    .checkbox-#{$name} input[type='checkbox']:checked + label:before,
+    .radio-#{$name} input[type='radio']:checked + label:before {
+        background: $color;
+        border-color: $color;
+    }
+
+    .checkbox-#{$name} input[type='checkbox']:checked + label:after,
+    .radio-#{$name} input[type='radio']:checked + label:after {
+        background: $color;
+    }
 }
