@@ -32,6 +32,7 @@ $footbar-label-size: $font-size * 0.8;
     max-height: $headbar-height;
     display: flex;
     user-select: none;
+    z-index: 1;
 
     @if $headbar-shadow-enable {
         box-shadow: $box-shadow-sm;
@@ -44,7 +45,6 @@ $footbar-label-size: $font-size * 0.8;
 
 .view-headbar > * {
     align-self: center;
-    z-index: 1;
 }
 
 .view-headbar .headbar-title {

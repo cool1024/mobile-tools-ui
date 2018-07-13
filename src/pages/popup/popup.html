@@ -36,10 +36,11 @@
         <div class="view-content p-2">
             <button class="btn btn-success w-100" target="default">Show</button>
             <button class="btn btn-success w-100 mt-2" target="full">Show Full</button>
+            <button class="btn btn-success w-100 mt-2" target="sheet">Show Action Sheet</button>
         </div>
     </div>
     <!--default-->
-    <div class="popup" id="default" style="display: none">
+    <div class="popup popup-default" style="display: none">
         <div class="popup-content bg-white">
             <div class="popup-title">
                 <div class="popup-close" target="close">
@@ -54,7 +55,7 @@
         </div>
     </div>
     <!--full-->
-    <div class="popup" id="full" style="display: none">
+    <div class="popup popup-full" style="display: none">
         <div class="popup-content bg-white h-100">
             <div class="popup-title">
                 <div class="popup-close" target="close">
@@ -65,6 +66,16 @@
             <div class="p-2">
 
             </div>
+        </div>
+    </div>
+    <!--action sheet-->
+    <div class="popup popup-sheet" style="display: none">
+        <div class="popup-content bg-muted">
+            <div class="popup-sheet-item bg-white text-center">拍照</div>
+            <div class="popup-sheet-line"></div>
+            <div class="popup-sheet-item bg-white text-center">从相册选择</div>
+            <div class="popup-sheet-line"></div>
+            <div class="popup-sheet-item bg-white text-center text-danger">取消</div>
         </div>
     </div>
 </body>

@@ -1,4 +1,5 @@
 @import "scss/variables";
+@import "scss/animate";
 @import "scss/functions";
 @import "scss/default";
 @import "scss/tools";
@@ -6,60 +7,9 @@
 @import "scss/card";
 @import "scss/image";
 @import "scss/toolbar";
-
-//
-// animate.css
-//
-// @import "~animate.css/source/base";
-.animated {
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-}
-
-.animated.infinite {
-    animation-iteration-count: infinite;
-}
-
-@import "~animate.css/source/sliding_entrances/slideInUp";
-
-.alert {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    justify-content: center;
-    background-color: rgba($dark, 0.4);
-}
-
-.alert.active {
-    display: flex;
-}
-
-.alert-dialog {
-    @extend .animated;
-
-    @extend .slideInUp;
-
-    align-self: center;
-    width: 80%;
-    box-shadow: $box-shadow;
-
-    h1, h2, h3, h4, h5, h6 {
-        margin-top: map-get($spacers, 2);
-    }
-}
-
-.alert-content {
-    line-height: $line-height;
-}
-
-.alert-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: map-get($spacers, 3);
-}
+@import "scss/popup";
+@import "scss/alert";
+@import "scss/checkbox";
 
 //
 // tab
@@ -81,109 +31,4 @@
 .tab .tab-item.active {
     color: red;
     border-bottom: 2px solid red;
-}
-
-.popup {
-    position: fixed;
-    display: flex;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba($dark, 0.4);
-}
-
-.popup-content {
-    @extend .animated;
-
-    @extend .slideInUp;
-
-    align-self: flex-end;
-    width: 100%;
-}
-
-.popup-title {
-    position: relative;
-}
-
-.popup-close {
-    position: absolute;
-    right: 0;
-    height: 100%;
-    display: flex;
-}
-
-.popup-close > * {
-    align-self: center;
-}
-
-//
-// checkbox
-//
-.checkbox,
-.radio {
-    position: relative;
-    height: 22px;
-}
-
-.checkbox input[type='checkbox'],
-.radio input[type='radio'] {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    opacity: 0;
-}
-
-.checkbox label,
-.radio label {
-    position: absolute;
-    left: 30px;
-    top: 0;
-    height: 22px;
-    line-height: 22px;
-}
-
-.checkbox label:before,
-.radio label:before {
-    content: '';
-    position: absolute;
-    left: -30px;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ddd;
-}
-
-.radio label:before {
-    border-radius: 50%;
-}
-
-.checkbox label:after,
-.radio label:after {
-    content: '';
-    position: absolute;
-    left: -22px;
-    top: 3px;
-    width: 6px;
-    height: 12px;
-    border: 0;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    background: #fff;
-    transform: rotate(45deg);
-}
-
-@each $name, $color in $checkbox-colors {
-    .checkbox-#{$name} input[type='checkbox']:checked + label:before,
-    .radio-#{$name} input[type='radio']:checked + label:before {
-        background: $color;
-        border-color: $color;
-    }
-
-    .checkbox-#{$name} input[type='checkbox']:checked + label:after,
-    .radio-#{$name} input[type='radio']:checked + label:after {
-        background: $color;
-    }
 }
