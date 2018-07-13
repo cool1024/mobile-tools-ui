@@ -28,3 +28,25 @@ export class Page {
         ctr.onInit();
     }
 }
+export class TemplateAnaylse {
+
+    private components: Component[];
+
+    addComponents(components: Component[]) {
+        components.forEach(component => this.addComponent(component));
+    }
+
+    addComponent(component: Component) {
+        this.components.push(component);
+    }
+
+    analyse(templateStr: string): string {
+        return templateStr;
+    }
+}
+export class Component {
+
+    selector: string;
+
+    template: string;
+}
