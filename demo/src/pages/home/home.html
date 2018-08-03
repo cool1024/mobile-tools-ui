@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./../../../resource/css/index.css">
+    <link rel="stylesheet" href="./../../../resource/font/iconfont.css">
+</head>
+
+<body class="bg-white">
+    <div class="view">
+        <div class="view-headbar bg-danger">
+            <div class="headbar-title text-center">我的音乐</div>
+        </div>
+        <div class="view-content">
+
+        </div>
+    </div>
+</body>
+<script src="./../../../resource/js/jquery.min.js"></script>
+<script>
+    var cookie = localStorage.getItem('cookie'), account = localStorage.getItem('account'), cookieStr = '';
+    cookie = cookie && JSON.parse(cookie);
+    account = account && JSON.parse(account);
+    cookie.forEach(function (str, index) {
+        cookie[index] = str.split(';')[0];
+    });
+    $.ajax({
+        url: 'http://www.cool1024.com:3000/user/playlist',
+        dataType: 'json',
+        data: { cookie: cookie.join(';'), uid: account.id },
+        type: 'post',
+        success: function (res) {
+            if (res.code === 200) {
+                res.playlist.forEach(function (media) {
+                    document.getElementsByClassName('view-content').item(0).innerHTML += getCardMediaStr(media);
+                });
+            }
+        }
+    });
+
+    function getCardMediaStr(media) {
+        return `
+        <a href="./../playlist/playlist.html?id=${media.id}">
+            <div class="card card-media mb-2">
+                <div class="card-media-thumb">
+                    <img class="w-100 h-100" src="${media.coverImgUrl}">
+                </div>
+                <div class="card-media-content">
+                    <h4 class="text-truncate">${media.name}</h4>
+                    <div class="text-gray text-truncate">${media.trackCount}首</div>
+                </div>
+            </div>
+        </a>`;
+    }
+</script>
+
+</html>

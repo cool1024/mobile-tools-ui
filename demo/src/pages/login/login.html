@@ -57,6 +57,7 @@
     </div>
 </body>
 <script src="./../../../resource/js/jquery.min.js"></script>
+<script src="./../../../resource/js/md5.min.js"></script>
 <script>
     $('.btn-login').click(function () {
         var params = {
@@ -64,22 +65,25 @@
             password: $('input[name="password"]').val()
         };
         if (!params.email) {
-            return;
+            return alert('请输入邮箱');
         }
         if (!params.password) {
-            return;
+            return alert('请输入密码');
         }
+        params.password = md5(params.password);
         $.ajax({
-            url: 'http://www.cool1024.com:3000/login?email=' + params.email + '&password=' + params.password,
+            url: 'http://www.cool1024.com:3000/login',
             dataType: 'json',
-            success: function (res) {
-                console.log(res);
+            type: 'post',
+            data: params,
+            success: function (res, status, ajax) {
                 if (res.code === 200) {
                     localStorage.setItem('account', JSON.stringify(res.account));
                     localStorage.setItem('profile', JSON.stringify(res.profile));
+                    localStorage.setItem('cookie', JSON.stringify(res.cookie));
                 }
             }
-        })
+        });
     });
 </script>
 
