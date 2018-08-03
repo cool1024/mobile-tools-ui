@@ -13,7 +13,7 @@
 <body class="bg-white">
     <div class="view">
         <div class="view-headbar bg-danger">
-            <div class="headbar-title text-center">我的音乐</div>
+            <div class="headbar-title text-center">播放</div>
         </div>
         <div class="view-content">
 
@@ -29,32 +29,50 @@
         cookie[index] = str.split(';')[0];
     });
     $.ajax({
-        url: 'http://www.cool1024.com:3000/user/playlist',
+        url: 'http://www.cool1024.com:3000/song/detail?timestamp=' + new Date().getTime(),
         dataType: 'json',
-        data: { cookie: cookie.join(';'), uid: account.id },
+        data: { cookie: cookie.join(';'), ids: getUrlParam('ids') },
         type: 'post',
         success: function (res) {
             if (res.code === 200) {
-                res.playlist.forEach(function (media) {
-                    document.getElementsByClassName('view-content').item(0).innerHTML += getCardMediaStr(media);
-                });
+                document.getElementsByClassName('view-content').item(0).innerHTML += getCardMediaStr(res.songs.pop().al);
+            }
+        }
+    });
+
+    $.ajax({
+        url: 'http://www.cool1024.com:3000/music/url?timestamp=' + new Date().getTime(),
+        dataType: 'json',
+        data: { cookie: cookie.join(';'), id: getUrlParam('ids'), br: 320000 },
+        type: 'post',
+        success: function (res) {
+            if (res.code === 200) {
+                console.log(res);
+                playMusic(res.data.pop().url);
             }
         }
     });
 
     function getCardMediaStr(media) {
         return `
-        <a href="./../playlist/playlist.html?ids=${media.id}">
             <div class="card card-media mb-2">
                 <div class="card-media-thumb">
-                    <img class="w-100 h-100" src="${media.coverImgUrl}">
+                    <img class="w-100 h-100" src="${media.picUrl}">
                 </div>
                 <div class="card-media-content">
                     <h4 class="text-truncate">${media.name}</h4>
-                    <div class="text-gray text-truncate">${media.trackCount}首</div>
                 </div>
-            </div>
-        </a>`;
+            </div>`;
+    }
+
+    function playMusic(src) {
+        document.getElementsByClassName('view-content').item(0).innerHTML += `<audio controls src="${src}"></audio>`;
+    }
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
     }
 </script>
 

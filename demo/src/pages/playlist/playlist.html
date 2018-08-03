@@ -29,29 +29,32 @@
         cookie[index] = str.split(';')[0];
     });
     $.ajax({
-        url: 'http://www.cool1024.com:3000/playlist/detail?id=24381616',
+        url: 'http://www.cool1024.com:3000/playlist/detail?timestamp=' + new Date().getTime(),
         dataType: 'json',
-        // data: { cookie: cookie.join(';'), id: getUrlParam('id') },
+        data: { cookie: cookie.join(';'), id: getUrlParam('id') },
         type: 'post',
         success: function (res) {
             if (res.code === 200) {
-                // res.playlist.forEach(function (media) {
-                //     document.getElementsByClassName('view-content').item(0).innerHTML += getCardMediaStr(media);
-                // });
+                res.playlist.tracks.forEach(function (media) {
+                    document.getElementsByClassName('view-content').item(0).innerHTML += getCardMediaStr({
+                        id: media.id,
+                        name: media.name,
+                        picUrl: media.al.picUrl
+                    });
+                });
             }
         }
     });
 
     function getCardMediaStr(media) {
         return `
-        <a href="./../playlist/playlist.html?id${media.id}">
+        <a href="./../play/play.html?ids=${media.id}">
             <div class="card card-media mb-2">
                 <div class="card-media-thumb">
-                    <img class="w-100 h-100" src="${media.coverImgUrl}">
+                    <img class="w-100 h-100" src="${media.picUrl}">
                 </div>
                 <div class="card-media-content">
                     <h4 class="text-truncate">${media.name}</h4>
-                    <div class="text-gray text-truncate">${media.trackCount}首</div>
                 </div>
             </div>
         </a>`;
