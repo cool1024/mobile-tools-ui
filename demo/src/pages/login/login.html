@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./../../../resource/css/index.css">
+    <link rel="stylesheet" href="./../../../resource/font/iconfont.css">
+    <style>
+        .form-control {
+            height: 3rem;
+            display: flex;
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+            align-items: center;
+        }
+
+        .form-control .form-control-label {
+            color: gray;
+            margin-right: 0.25rem;
+        }
+
+        .form-control input {
+            flex-grow: 1;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-login {
+            line-height: 1.5;
+            border-radius: 3rem;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div class="view">
+        <div class="view-headbar bg-danger">
+            <div class="headbar-title text-center">邮箱登入</div>
+        </div>
+        <div class="view-content pt-5 pl-3 pr-3">
+            <div class="form-control">
+                <span class="form-control-label">
+                    <i class="iconfont icon-email text-dark"></i>
+                </span>
+                <input type="text" name="email" placeholder="请输入邮箱">
+            </div>
+            <div class="form-control mt-3">
+                <span class="form-control-label">
+                    <i class="iconfont icon-lock text-dark"></i>
+                </span>
+                <input type="password" name="password" placeholder="请输入密码">
+            </div>
+            <button class="btn btn-danger btn-login w-100 mt-4">登录</button>
+        </div>
+    </div>
+</body>
+<script src="./../../../resource/js/jquery.min.js"></script>
+<script>
+    $('.btn-login').click(function () {
+        var params = {
+            email: $('input[name="email"]').val(),
+            password: $('input[name="password"]').val()
+        };
+        if (!params.email) {
+            return;
+        }
+        if (!params.password) {
+            return;
+        }
+        $.ajax({
+            url: 'http://www.cool1024.com:3000/login?email=' + params.email + '&password=' + params.password,
+            dataType: 'json',
+            success: function (res) {
+                console.log(res);
+                if (res.code === 200) {
+                    localStorage.setItem('account', JSON.stringify(res.account));
+                    localStorage.setItem('profile', JSON.stringify(res.profile));
+                }
+            }
+        })
+    });
+</script>
+
+</html>

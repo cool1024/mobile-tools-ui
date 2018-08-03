@@ -42,7 +42,7 @@ $colors: map-merge(("white": $white, "light": $light, "muted": $muted, "gray": $
 $main-colors: ("primary": $primary, "info": $info, "danger": $danger, "warning": $warning, "success": $success);
 $btn-colors: ("white": $white, "dark": $dark, "danger": $danger, "warning": $warning, "success": $success);
 $checkbox-colors: $btn-colors;
-$bg-colors: map-merge(("pink": $pink), $colors);
+$bg-colors: map-merge(("danger": $danger), $colors);
 
 $text-colors: map-merge($main-colors, $colors);
 
