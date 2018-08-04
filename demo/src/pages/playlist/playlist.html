@@ -8,15 +8,138 @@
     <title>Document</title>
     <link rel="stylesheet" href="./../../../resource/css/index.css">
     <link rel="stylesheet" href="./../../../resource/font/iconfont.css">
+    <style>
+        .iconfont {
+            font-size: 1.2rem;
+        }
+
+        .view-footbar .iconfont {
+            font-size: 1.5rem;
+        }
+
+        .playlist {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .playlist .playlist-header {
+            line-height: 2;
+        }
+
+        .playlist .playlist-header,
+        .playlist .music-item {
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+        }
+
+        .playlist .music-item {
+            width: calc(100% - 40px);
+        }
+
+        .playlist .music-icon {
+            width: 30px;
+            text-align: center;
+            display: block;
+        }
+
+        .playlist .music-text {
+            width: calc(100% - 4rem);
+        }
+    </style>
 </head>
 
 <body class="bg-white">
     <div class="view">
-        <div class="view-headbar bg-danger">
-            <div class="headbar-title text-center">歌单</div>
+        <div class="view-headbar bg-dark">
+            <div class="headbar-title pl-2 pr-2 flex-between">
+                <div>
+                    <i class="iconfont icon-i-back"></i>
+                    <span class="ml-2">歌单</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-search mr-2"></i>
+                    <i class="iconfont icon-more"></i>
+                </div>
+            </div>
         </div>
-        <div class="view-content">
-
+        <div class="view-content bg-dark">
+            <div class="flex-start p-4">
+                <div style="width:30%">
+                    <img class="w-100 __coverImgUrl__" src="???" alt="封面">
+                </div>
+                <div class="ml-4">
+                    <h6>我喜欢的音乐</h6>
+                    <div class="flex align-items-center">
+                        <img class="img-circle __avatarUrl__" width="30" height="30" src="???" alt="头像">
+                        <span class="font-size-sm ml-2 __nickname__">这个是我的昵称</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-around mt-3">
+                <div class="text-center">
+                    <i class="iconfont icon-comments"></i>
+                    <div class="mt-1 font-size-sm">评论</div>
+                </div>
+                <div class="text-center">
+                    <i class="iconfont icon-share"></i>
+                    <div class="mt-1 font-size-sm">分享</div>
+                </div>
+                <div class="text-center">
+                    <i class="iconfont icon-download"></i>
+                    <div class="mt-1 font-size-sm">下载</div>
+                </div>
+                <div class="text-center">
+                    <i class="iconfont icon-checkbox"></i>
+                    <div class="mt-1 font-size-sm">多选</div>
+                </div>
+            </div>
+            <div class="playlist bg-white mt-4 pb-2">
+                <div class="playlist-header p-2">
+                    <i class="iconfont icon-videoplay"></i>
+                    <span class="__trackCount__">播放全部(共???首)</span>
+                </div>
+                <div class="__output__"></div>
+                <!-- <div class="flex align-items-center pt-2 pl-2 pr-2">
+                    <i class="music-icon iconfont icon-i-sound text-danger pb-2"></i>
+                    <div class="flex-between align-items-center ml-2 w-100 pb-2 music-item">
+                        <div>
+                            <div class="text-truncate">late in autunm</div>
+                            <div class="font-size-sm mt-2 text-muted">fripSid</div>
+                        </div>
+                        <div class="text-muted">
+                            <i class="iconfont icon-icon_videoplay mr-2"></i>
+                            <i class="iconfont icon-more"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex align-items-center pt-2 pl-2 pr-2">
+                    <span class="music-icon pb-2">2</span>
+                    <div class="flex-between align-items-center ml-2 w-100 pb-2 music-item">
+                        <div>
+                            <div>late in autunm</div>
+                            <div class="font-size-sm mt-2 text-muted">fripSid</div>
+                        </div>
+                        <div class="text-muted">
+                            <i class="iconfont icon-icon_videoplay mr-2"></i>
+                            <i class="iconfont icon-more"></i>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="view-footbar">
+            <div class="w-100 h-100 flex align-items-center p-1">
+                <img style="height:100%;" src="http://p1.music.126.net/_1HDZcJ-wDEtwkZ1cYqRbA==/3254554427603674.jpg">
+                <div class="flex-between align-items-center pl-2 w-100">
+                    <div>
+                        <div class="font-size-sm mb-2">歌曲名称</div>
+                        <div class="font-size-sm text-muted">横滑可以上下切换歌曲哦</div>
+                    </div>
+                    <div>
+                        <i class="iconfont icon-play mr-2"></i>
+                        <i class="iconfont icon-category mr-1"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -29,42 +152,64 @@
         cookie[index] = str.split(';')[0];
     });
     $.ajax({
-        url: 'http://www.cool1024.com:3000/playlist/detail?timestamp=' + new Date().getTime(),
+        url: 'http://www.cool1024.com:3000/playlist/detail',
         dataType: 'json',
-        data: { cookie: cookie.join(';'), id: getUrlParam('id') },
+        data: { cookie: cookie.join(';'), id: getUrlParam('ids') },
         type: 'post',
         success: function (res) {
             if (res.code === 200) {
-                res.playlist.tracks.forEach(function (media) {
-                    document.getElementsByClassName('view-content').item(0).innerHTML += getCardMediaStr({
+                fillView({
+                    coverImgUrl: res.playlist.coverImgUrl,
+                    avatarUrl: res.playlist.creator.avatarUrl,
+                    nickname: res.playlist.creator.nickname,
+                    trackCount: res.playlist.trackCount
+                });
+                res.playlist.tracks.forEach(function (media, index) {
+                    appendMusic({
                         id: media.id,
                         name: media.name,
-                        picUrl: media.al.picUrl
-                    });
+                        picUrl: media.al.picUrl,
+                        arName: media.ar.pop().name,
+                    }, index);
                 });
             }
         }
     });
-
-    function getCardMediaStr(media) {
-        return `
-        <a href="./../play/play.html?ids=${media.id}">
-            <div class="card card-media mb-2">
-                <div class="card-media-thumb">
-                    <img class="w-100 h-100" src="${media.picUrl}">
-                </div>
-                <div class="card-media-content">
-                    <h4 class="text-truncate">${media.name}</h4>
-                </div>
-            </div>
-        </a>`;
-    }
 
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+
+    function appendMusic(media, index) {
+        document.getElementsByClassName('__output__').item(0).innerHTML += `
+            <div class="flex align-items-center pt-2 pl-2 pr-2">
+                <span class="music-icon pb-2 text-muted">${index}</span>
+                <div class="flex-between align-items-center ml-2 w-100 pb-2 music-item">
+                    <div class="music-text">
+                        <div class="text-truncate">${media.name}</div>
+                        <div class="font-size-sm mt-2 text-muted">${media.arName}</div>
+                    </div>
+                    <div class="text-muted">
+                        <i class="iconfont icon-icon_videoplay mr-2"></i>
+                        <i class="iconfont icon-more"></i>
+                    </div>
+                </div>
+            </div>`
+    }
+
+    function fillView(datas) {
+        getDom('coverImgUrl').src = datas.coverImgUrl;
+        getDom('avatarUrl').src = datas.avatarUrl;
+        getDom('nickname').innerHTML = datas.nickname;
+        getDom('trackCount').innerHTML = `播放全部(共${datas.trackCount}首)`;
+    }
+
+    function getDom(targetName) {
+        return document.getElementsByClassName('__' + targetName + '__').item(0);
+    }
+
 </script>
 
 </html>
