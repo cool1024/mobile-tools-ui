@@ -52,7 +52,7 @@
         <div class="view-headbar bg-dark">
             <div class="headbar-title pl-2 pr-2 flex-between">
                 <div>
-                    <i class="iconfont icon-i-back"></i>
+                    <a href="../home/home.html" class="iconfont icon-i-back text-white"></a>
                     <span class="ml-2">歌单</span>
                 </div>
                 <div>
@@ -152,7 +152,7 @@
         cookie[index] = str.split(';')[0];
     });
     $.ajax({
-        url: 'http://www.cool1024.com:3000/playlist/detail',
+        url: 'http://www.cool1024.com:3000/playlist/detail?&timestamp=' + new Date().getTime(),
         dataType: 'json',
         data: { cookie: cookie.join(';'), id: getUrlParam('ids') },
         type: 'post',
@@ -184,7 +184,7 @@
 
     function appendMusic(media, index) {
         document.getElementsByClassName('__output__').item(0).innerHTML += `
-            <div class="flex align-items-center pt-2 pl-2 pr-2">
+            <div class="flex align-items-center pt-2 pl-2 pr-2" onclick="goPlay(${media.id})">
                 <span class="music-icon pb-2 text-muted">${index}</span>
                 <div class="flex-between align-items-center ml-2 w-100 pb-2 music-item">
                     <div class="music-text">
@@ -197,6 +197,14 @@
                     </div>
                 </div>
             </div>`
+    }
+
+    function goPlay(id) {
+        window.location.href = '../play/play.html?ids=' + id;
+    }
+
+    function playMusic() {
+
     }
 
     function fillView(datas) {

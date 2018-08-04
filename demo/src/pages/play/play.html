@@ -8,34 +8,191 @@
     <title>Document</title>
     <link rel="stylesheet" href="./../../../resource/css/index.css">
     <link rel="stylesheet" href="./../../../resource/font/iconfont.css">
+    <style>
+        .music-headbar {
+            background: rgba(253, 253, 253, 0.05);
+            line-height: 2;
+        }
+
+        .music-background {
+            background-size: cover;
+            filter: blur(20px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            ;
+        }
+
+        .music-disk {
+            margin-top: 5rem;
+            width: 16rem;
+            height: 16rem;
+            background: rgba(253, 253, 253, 0.05);
+        }
+
+        .music-disk.active {
+            animation: loop 20s linear infinite;
+        }
+
+        @keyframes loop {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .music-disk-background {
+            background: url(http://followyourheart.sinaapp.com/Demos/musicPlayer/resource/images/play_disc.png) no-repeat center;
+            background-size: cover;
+        }
+
+        .music-disk-background img {
+            width: 12rem;
+            height: 12rem;
+        }
+
+        .music-needle {
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .music-needle {
+            height: 10rem;
+            position: absolute;
+            width: 100%;
+        }
+
+        .music-needle img {
+            transform: rotateZ(-30deg);
+            transform-origin: 1.2rem 1.2rem;
+            margin-top: -1.4rem;
+            margin-left: -1.4rem;
+            left: 50%;
+            height: 10rem;
+            position: absolute;
+            transition: transform .5s;
+        }
+
+        .play-icon {
+            border: 1px solid rgb(226, 226, 226);
+            color: rgb(226, 226, 226);
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-icon:hover {
+            border: 1px solid white;
+            color: white;
+        }
+
+        .play-icon .iconfont {
+            font-size: 1.5rem;
+        }
+
+        .play-icon.play-icon-main {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+
+        .play-icon.play-icon-main .iconfont {
+            font-size: 2rem;
+        }
+
+        .play-menu .iconfont {
+            font-size: 2rem;
+            color: rgb(190, 190, 190);
+        }
+
+        .play-menu .iconfont:hover {
+            color: white;
+        }
+
+        .view-footbar {
+            box-shadow: none;
+            min-height: 6rem;
+            justify-content: center;
+        }
+    </style>
 </head>
 
 <body class="bg-white">
+    <div class="music-background h-100 w-100" style="background-image: url(http://p1.music.126.net/Ozh-0S7nshyuMiAdG_36pQ==/799344953443835.jpg);"></div>
     <div class="view">
-        <div class="view-headbar bg-danger">
-            <div class="headbar-title text-center">播放</div>
-        </div>
         <div class="view-content">
-
+            <div class="music-headbar text-white flex-center p-2">
+                <div>
+                    <div class="__name__">歌曲名称</div>
+                    <div class="font-size-sm text-muted __author__">作者</div>
+                </div>
+            </div>
+            <div class="music-needle">
+                <img class="__needle__" src="http://followyourheart.sinaapp.com/Demos/musicPlayer/resource/images/play_needle.png">
+            </div>
+            <div class="flex-center">
+                <div class="music-disk circle p-1">
+                    <div class="music-disk-background img-circle flex-center align-items-center w-100 h-100">
+                        <img class="img-circle __picUrl__" src="http://followyourheart.sinaapp.com/Demos/musicPlayer/resource/images/placeholder_disk_play_song.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-footbar align-items-center">
+            <div class="play-menu">
+                <i class="iconfont icon-icon_loop"></i>
+            </div>
+            <div class="play-icon circle ml-4">
+                <i class="iconfont icon-preview"></i>
+            </div>
+            <div class="play-icon circle play-icon-main ml-4 mr-4 __play_">
+                <i class="iconfont icon-start"></i>
+            </div>
+            <div class="play-icon circle mr-4">
+                <i class="iconfont icon-next"></i>
+            </div>
+            <div class="play-menu">
+                <i class="iconfont icon-category"></i>
+            </div>
         </div>
     </div>
 </body>
 <script src="./../../../resource/js/jquery.min.js"></script>
 <script>
-    var cookie = localStorage.getItem('cookie'), account = localStorage.getItem('account'), cookieStr = '';
-    cookie = cookie && JSON.parse(cookie);
-    account = account && JSON.parse(account);
-    cookie.forEach(function (str, index) {
-        cookie[index] = str.split(';')[0];
+
+    var playStatus = 'load';// load,ready,play,pause,error
+
+    var audio = new Audio();
+
+    $('.__play_').click(function () {
+        if (playStatus === 'ready' || playStatus === 'pause') {
+            setPlay();
+        } else if (playStatus === 'play') {
+            setPause();
+        } else if (playStatus === 'load') {
+            // 音乐加载中
+            alert('音乐正在加载中，请稍后');
+        } else {
+            // 音乐加载失败
+            alert('音乐加载失败，请检查您的网络');
+        }
     });
+
     $.ajax({
         url: 'http://www.cool1024.com:3000/song/detail?timestamp=' + new Date().getTime(),
         dataType: 'json',
-        data: { cookie: cookie.join(';'), ids: getUrlParam('ids') },
+        data: { ids: getUrlParam('ids') },
         type: 'post',
         success: function (res) {
             if (res.code === 200) {
-                document.getElementsByClassName('view-content').item(0).innerHTML += getCardMediaStr(res.songs.pop().al);
+                fillView({
+                    name: res.songs[0].al.name,
+                    picUrl: res.songs[0].al.picUrl,
+                    author: res.songs[0].ar.pop().name,
+                });
             }
         }
     });
@@ -43,26 +200,65 @@
     $.ajax({
         url: 'http://www.cool1024.com:3000/music/url?timestamp=' + new Date().getTime(),
         dataType: 'json',
-        data: { cookie: cookie.join(';'), id: getUrlParam('ids'), br: 320000 },
+        data: { id: getUrlParam('ids'), br: 320000 },
         type: 'post',
         success: function (res) {
             if (res.code === 200) {
-                console.log(res);
-                playMusic(res.data.pop().url);
+                initAudio(res.data.pop().url);
             }
         }
     });
 
-    function getCardMediaStr(media) {
-        return `
-            <div class="card card-media mb-2">
-                <div class="card-media-thumb">
-                    <img class="w-100 h-100" src="${media.picUrl}">
-                </div>
-                <div class="card-media-content">
-                    <h4 class="text-truncate">${media.name}</h4>
-                </div>
-            </div>`;
+    function initAudio(src) {
+        audio.src = src;
+        audio.preload = 'auto';
+
+        audio.addEventListener('canplay', function () {
+            playStatus = 'ready';
+        });
+        // listenAudioState();
+
+        audio.addEventListener('error', function () {
+            playStatus = 'error';
+        });
+    }
+
+    function listenAudioState() {
+        setInterval(function () {
+            alert(audio.readyState);
+        }, 1000);
+    }
+
+    function fillView(datas) {
+        getDom('picUrl').src = datas.picUrl;
+        getDom('name').innerHTML = datas.name;
+        getDom('author').innerHTML = datas.author;
+    }
+
+    function getDom(targetName) {
+        return document.getElementsByClassName('__' + targetName + '__').item(0);
+    }
+
+    function setPlay() {
+        document.getElementsByClassName('__needle__').item(0).style.transform = 'rotateZ(0deg)';
+        const playIcon = document.getElementsByClassName('icon-start').item(0);
+        playIcon.classList.remove('icon-start');
+        playIcon.classList.add('icon-pause');
+        const playDisk = document.getElementsByClassName('music-disk').item(0);
+        playDisk.classList.add('active');
+        playStatus = 'play';
+        audio.play();
+    }
+
+    function setPause() {
+        document.getElementsByClassName('__needle__').item(0).style.transform = 'rotateZ(-30deg)';
+        const playIcon = document.getElementsByClassName('icon-pause').item(0);
+        playIcon.classList.remove('icon-pause');
+        playIcon.classList.add('icon-start');
+        const playDisk = document.getElementsByClassName('music-disk').item(0);
+        playDisk.classList.remove('active');
+        playStatus = 'pause';
+        audio.pause();
     }
 
     function playMusic(src) {
