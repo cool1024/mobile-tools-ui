@@ -44,7 +44,7 @@
         }
 
         .music-disk-background {
-            background: url(http://followyourheart.sinaapp.com/Demos/musicPlayer/resource/images/play_disc.png) no-repeat center;
+            background: url(../../../resource/images/play_disc.png) no-repeat center;
             background-size: cover;
         }
 
@@ -121,7 +121,8 @@
 </head>
 
 <body class="bg-white">
-    <div class="music-background h-100 w-100" style="background-image: url(http://p1.music.126.net/Ozh-0S7nshyuMiAdG_36pQ==/799344953443835.jpg);"></div>
+    <img src="" alt="">
+    <div class="music-background h-100 w-100 __background__"></div>
     <div class="view">
         <div class="view-content">
             <div class="music-headbar text-white flex-center p-2">
@@ -131,12 +132,12 @@
                 </div>
             </div>
             <div class="music-needle">
-                <img class="__needle__" src="http://followyourheart.sinaapp.com/Demos/musicPlayer/resource/images/play_needle.png">
+                <img class="__needle__" src="../../../resource/images/play_needle.png">
             </div>
             <div class="flex-center">
                 <div class="music-disk circle p-1">
                     <div class="music-disk-background img-circle flex-center align-items-center w-100 h-100">
-                        <img class="img-circle __picUrl__" src="http://followyourheart.sinaapp.com/Demos/musicPlayer/resource/images/placeholder_disk_play_song.png">
+                        <img class="img-circle __picUrl__" src="../../../resource/images/placeholder_disk_play_song.png">
                     </div>
                 </div>
             </div>
@@ -233,6 +234,7 @@
         getDom('picUrl').src = datas.picUrl;
         getDom('name').innerHTML = datas.name;
         getDom('author').innerHTML = datas.author;
+        getDom('background').style.backgroundImage = `url(${datas.picUrl})`;
     }
 
     function getDom(targetName) {
