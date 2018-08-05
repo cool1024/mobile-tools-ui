@@ -80,8 +80,16 @@
         }
     }
 
+    .p-auto {
+        padding: auto;
+    }
+
     .m-#{$number} {
         margin: $space;
+    }
+
+    .m-auto {
+        margin: auto;
     }
 
     @each $key, $value in $rltb {
@@ -182,6 +190,10 @@
 
 .align-content-around {
     align-content: space-around;
+}
+
+.align-itesm-center {
+    align-items: center;
 }
 
 .visable {

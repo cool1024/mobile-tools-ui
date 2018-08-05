@@ -100,7 +100,7 @@ h1 {
 }
 
 .bg-danger {
-    background-color: #dc3545;
+    background-color: #f24644;
     color: #e9ecef;
 }
 
@@ -146,7 +146,7 @@ h1 {
 }
 
 .text-danger {
-    color: #dc3545;
+    color: #f24644;
 }
 
 .text-indent {
@@ -271,8 +271,16 @@ h1 {
     padding-bottom: 0 !important;
 }
 
+.p-auto {
+    padding: auto;
+}
+
 .m-none {
     margin: 0 !important;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .mr-none {
@@ -311,8 +319,16 @@ h1 {
     padding-bottom: 0 !important;
 }
 
+.p-auto {
+    padding: auto;
+}
+
 .m-0 {
     margin: 0 !important;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .mr-0 {
@@ -351,8 +367,16 @@ h1 {
     padding-bottom: 0.25rem;
 }
 
+.p-auto {
+    padding: auto;
+}
+
 .m-1 {
     margin: 0.25rem;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .mr-1 {
@@ -391,8 +415,16 @@ h1 {
     padding-bottom: 0.5rem;
 }
 
+.p-auto {
+    padding: auto;
+}
+
 .m-2 {
     margin: 0.5rem;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .mr-2 {
@@ -431,8 +463,16 @@ h1 {
     padding-bottom: 1rem;
 }
 
+.p-auto {
+    padding: auto;
+}
+
 .m-3 {
     margin: 1rem;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .mr-3 {
@@ -471,8 +511,16 @@ h1 {
     padding-bottom: 1.5rem;
 }
 
+.p-auto {
+    padding: auto;
+}
+
 .m-4 {
     margin: 1.5rem;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .mr-4 {
@@ -511,8 +559,16 @@ h1 {
     padding-bottom: 2rem;
 }
 
+.p-auto {
+    padding: auto;
+}
+
 .m-5 {
     margin: 2rem;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .mr-5 {
@@ -553,14 +609,6 @@ h1 {
 
 .h-100 {
     height: 100%;
-}
-
-.w-auto {
-    width: auto;
-}
-
-.h-auto {
-    height: auto;
 }
 
 .flex, .flex-around, .view-footbar, .flex-between, .flex-start, .flex-end, .flex-center {
@@ -663,7 +711,7 @@ h1 {
 }
 
 .btn-danger {
-    background-color: #dc3545;
+    background-color: #f24644;
     color: #e9ecef;
 }
 
@@ -955,13 +1003,13 @@ h1 {
 
 .checkbox-danger input[type='checkbox']:checked + label:before,
 .radio-danger input[type='radio']:checked + label:before {
-    background: #dc3545;
-    border-color: #dc3545;
+    background: #f24644;
+    border-color: #f24644;
 }
 
 .checkbox-danger input[type='checkbox']:checked + label:after,
 .radio-danger input[type='radio']:checked + label:after {
-    background: #dc3545;
+    background: #f24644;
 }
 
 .checkbox-warning input[type='checkbox']:checked + label:before,
@@ -1053,8 +1101,8 @@ h1 {
 }
 
 .switch-danger .switch-input:checked + .switch-core {
-    border-color: #dc3545;
-    background-color: #dc3545;
+    border-color: #f24644;
+    background-color: #f24644;
 }
 
 .switch-warning .switch-input:checked + .switch-core {

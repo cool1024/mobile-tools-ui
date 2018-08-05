@@ -27,7 +27,7 @@ $gray: $gray-800;
 // main color
 $primary: #007bff;
 $info: #17a2b8;
-$danger: #dc3545;
+$danger: #f24644;
 $warning: #ffc107;
 $success: #28a745;
 
@@ -63,7 +63,7 @@ $spacer: 1rem;
 $spacers: map-merge(("none": 0 !important, 0: 0 !important, 1: $spacer * 0.25, 2: $spacer * 0.5, 3: $spacer, 4: $spacer * 1.5, 5: $spacer * 2), ());
 
 // size leves
-$sizes: 50, 100, auto;
+$sizes: 50, 100;
 
 //
 // radius

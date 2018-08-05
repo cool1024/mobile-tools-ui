@@ -59,6 +59,11 @@
 <script src="./../../../resource/js/jquery.min.js"></script>
 <script src="./../../../resource/js/md5.min.js"></script>
 <script>
+
+    if (localStorage.getItem('cookie')) {
+        window.location.href = '../home/home.html';
+    }
+
     $('.btn-login').click(function () {
         var params = {
             email: $('input[name="email"]').val(),
@@ -81,6 +86,7 @@
                     localStorage.setItem('account', JSON.stringify(res.account));
                     localStorage.setItem('profile', JSON.stringify(res.profile));
                     localStorage.setItem('cookie', JSON.stringify(res.cookie));
+                    window.location.href = '../home/home.html';
                 }
             }
         });

@@ -8,21 +8,56 @@
     <title>Document</title>
     <link rel="stylesheet" href="./../../../resource/css/index.css">
     <link rel="stylesheet" href="./../../../resource/font/iconfont.css">
+    <style>
+        .iconfont {
+            font-size: 1.3rem;
+        }
+
+        .view-headbar {
+            box-shadow: none;
+        }
+
+        .headbar-title .iconfont {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .headbar-title .iconfont.active {
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="bg-white">
     <div class="view">
-        <div class="view-headbar bg-danger">
-            <div class="headbar-title text-center">我的音乐</div>
+        <div class="view-headbar bg-danger pl-3 pr-3">
+            <i class="iconfont icon-menu"></i>
+            <div class="headbar-title text-center flex-around ml-4 mr-4">
+                <i class="iconfont icon-music"></i>
+                <i class="iconfont icon-CN_NetEasemusic active"></i>
+                <i class="iconfont icon-icon_videoplay"></i>
+            </div>
+            <i class="iconfont icon-search"></i>
         </div>
         <div class="view-content">
-
+            <div class="tab">
+                <div class="tab-item active">推荐</div>
+                <div class="tab-item">朋友</div>
+                <div class="tab-item">电台</div>
+            </div>
+            <div>
+                <div class="loop-container">
+                    <div class="loop-card"></div>
+                    <div class="loop-card"></div>
+                    <div class="loop-card"></div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 <script src="./../../../resource/js/jquery.min.js"></script>
 <script>
     var cookie = localStorage.getItem('cookie'), account = localStorage.getItem('account'), cookieStr = '';
+    console.log(cookie);
     cookie = cookie && JSON.parse(cookie);
     account = account && JSON.parse(account);
     cookie.forEach(function (str, index) {
