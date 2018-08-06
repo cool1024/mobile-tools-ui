@@ -647,6 +647,10 @@ h1 {
     flex-wrap: wrap-reverse;
 }
 
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
 .align-content-start {
     align-content: flex-start;
 }

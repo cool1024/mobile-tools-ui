@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="./../../../resource/css/index.css">
     <link rel="stylesheet" href="./../../../resource/font/iconfont.css">
     <style>
+        .view-content,
+        .view-footbar {
+            background-color: rgba(0, 0, 0, 0.49);
+            position: relative;
+        }
+
         .music-headbar {
             background: rgba(253, 253, 253, 0.05);
             line-height: 2;
@@ -117,6 +123,39 @@
             min-height: 6rem;
             justify-content: center;
         }
+
+        .progress {
+            height: 0.1rem;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: red;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            background: red;
+            color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 0.3rem;
+            width: 0.3rem;
+            position: absolute;
+            right: 0rem;
+            top: -0.5rem;
+            border-radius: 50%;
+            border: 0.4rem solid white;
+        }
+
+        .play-progress {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
 
@@ -141,18 +180,25 @@
                     </div>
                 </div>
             </div>
+            <div class="play-progress flex-around align-items-center">
+                <div class="text-white m-4">00:00</div>
+                <div class="progress flex-grow-1">
+                    <div class="progress-bar" style="width:70%;"></div>
+                </div>
+                <div class="text-white m-4">03:28</div>
+            </div>
         </div>
         <div class="view-footbar align-items-center">
             <div class="play-menu">
                 <i class="iconfont icon-icon_loop"></i>
             </div>
             <div class="play-icon circle ml-4">
-                <i class="iconfont icon-preview"></i>
+                <i class="iconfont icon-preview __pre__"></i>
             </div>
             <div class="play-icon circle play-icon-main ml-4 mr-4 __play_">
                 <i class="iconfont icon-start"></i>
             </div>
-            <div class="play-icon circle mr-4">
+            <div class="play-icon circle mr-4 __next__">
                 <i class="iconfont icon-next"></i>
             </div>
             <div class="play-menu">
@@ -163,6 +209,10 @@
 </body>
 <script src="./../../../resource/js/jquery.min.js"></script>
 <script>
+
+    var playList = JSON.parse(localStorage.getItem('playlist') || '[]');
+
+    var activeMusicIndex = Number(localStorage.getItem('activeMusicIndex') || 0);
 
     var playStatus = 'load';// load,ready,play,pause,error
 
@@ -182,46 +232,63 @@
         }
     });
 
-    $.ajax({
-        url: 'http://www.cool1024.com:3000/song/detail?timestamp=' + new Date().getTime(),
-        dataType: 'json',
-        data: { ids: getUrlParam('ids') },
-        type: 'post',
-        success: function (res) {
-            if (res.code === 200) {
-                fillView({
-                    name: res.songs[0].al.name,
-                    picUrl: res.songs[0].al.picUrl,
-                    author: res.songs[0].ar.pop().name,
-                });
-            }
-        }
+    $('.__next__').click(function () {
+        setNext();
     });
 
-    $.ajax({
-        url: 'http://www.cool1024.com:3000/music/url?timestamp=' + new Date().getTime(),
-        dataType: 'json',
-        data: { id: getUrlParam('ids'), br: 320000 },
-        type: 'post',
-        success: function (res) {
-            if (res.code === 200) {
-                initAudio(res.data.pop().url);
-            }
-        }
+    $('.__pre__').click(function () {
+        setPre();
     });
+
+    function loadMusic(ids) {
+        $.ajax({
+            url: 'http://www.cool1024.com:3000/song/detail?timestamp=' + new Date().getTime(),
+            dataType: 'json',
+            data: { ids },
+            type: 'post',
+            success: function (res) {
+                if (res.code === 200) {
+                    fillView({
+                        name: res.songs[0].al.name,
+                        picUrl: res.songs[0].al.picUrl,
+                        author: res.songs[0].ar.pop().name,
+                    });
+                }
+            }
+        });
+
+        $.ajax({
+            url: 'http://www.cool1024.com:3000/music/url?timestamp=' + new Date().getTime(),
+            dataType: 'json',
+            data: { id: ids, br: 320000 },
+            type: 'post',
+            success: function (res) {
+                if (res.code === 200) {
+                    initAudio(res.data.pop().url);
+                }
+            }
+        });
+    }
 
     function initAudio(src) {
-        audio.src = src;
-        audio.preload = 'auto';
 
-        audio.addEventListener('canplay', function () {
+        audio.src = src;
+
+        // audio.preload = 'auto';
+
+        audio.oncanplay = function () {
             playStatus = 'ready';
-        });
+            setPlay();
+        };
         // listenAudioState();
 
-        audio.addEventListener('error', function () {
+        audio.onerror = function () {
             playStatus = 'error';
-        });
+        };
+
+        audio.onended = function () {
+            setNext();
+        }
     }
 
     function listenAudioState() {
@@ -263,6 +330,22 @@
         audio.pause();
     }
 
+    function setNext() {
+        setPause();
+        (playList.length - 1 > activeMusicIndex) ? activeMusicIndex++ : activeMusicIndex = 0;
+        localStorage.setItem('activeMusicIndex', activeMusicIndex);
+        loadMusic(playList[activeMusicIndex].id);
+    }
+
+    function setPre() {
+        console.log(playList.length);
+        setPause();
+        activeMusicIndex > 0 ? activeMusicIndex-- : activeMusicIndex = playList.length - 1;
+        localStorage.setItem('activeMusicIndex', activeMusicIndex);
+        console.log(activeMusicIndex);
+        loadMusic(playList[activeMusicIndex].id);
+    }
+
     function playMusic(src) {
         document.getElementsByClassName('view-content').item(0).innerHTML += `<audio controls src="${src}"></audio>`;
     }
@@ -272,6 +355,8 @@
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+
+    loadMusic(getUrlParam('ids'));
 </script>
 
 </html>

@@ -145,9 +145,8 @@
 </body>
 <script src="./../../../resource/js/jquery.min.js"></script>
 <script>
-    var cookie = localStorage.getItem('cookie'), account = localStorage.getItem('account'), cookieStr = '';
+    var cookie = localStorage.getItem('cookie'), playList = [], cookieStr = '';
     cookie = cookie && JSON.parse(cookie);
-    account = account && JSON.parse(account);
     cookie.forEach(function (str, index) {
         cookie[index] = str.split(';')[0];
     });
@@ -172,6 +171,7 @@
                         arName: media.ar.pop().name,
                     }, index);
                 });
+                playList = res.playlist.tracks;
             }
         }
     });
@@ -184,7 +184,7 @@
 
     function appendMusic(media, index) {
         document.getElementsByClassName('__output__').item(0).innerHTML += `
-            <div class="flex align-items-center pt-2 pl-2 pr-2" onclick="goPlay(${media.id})">
+            <div class="flex align-items-center pt-2 pl-2 pr-2" onclick="goPlay(${media.id},${index})">
                 <span class="music-icon pb-2 text-muted">${index}</span>
                 <div class="flex-between align-items-center ml-2 w-100 pb-2 music-item">
                     <div class="music-text">
@@ -199,8 +199,10 @@
             </div>`
     }
 
-    function goPlay(id) {
+    function goPlay(id, index) {
         window.location.href = '../play/play.html?ids=' + id;
+        localStorage.setItem('playlist', JSON.stringify(playList));
+        localStorage.setItem('activeMusicIndex', index)
     }
 
     function playMusic() {
