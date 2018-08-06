@@ -253,21 +253,22 @@
                         picUrl: res.songs[0].al.picUrl,
                         author: res.songs[0].ar.pop().name,
                     });
+                    initAudio(`http://music.163.com/song/media/outer/url?id=${ids}.mp3`);
                 }
             }
         });
 
-        $.ajax({
-            url: 'http://www.cool1024.com:3000/music/url?timestamp=' + new Date().getTime(),
-            dataType: 'json',
-            data: { id: ids, br: 320000 },
-            type: 'post',
-            success: function (res) {
-                if (res.code === 200) {
-                    initAudio(res.data.pop().url);
-                }
-            }
-        });
+        // $.ajax({
+        //     url: 'http://www.cool1024.com:3000/music/url?timestamp=' + new Date().getTime(),
+        //     dataType: 'json',
+        //     data: { id: ids, br: 320000 },
+        //     type: 'post',
+        //     success: function (res) {
+        //         if (res.code === 200) {
+        //             initAudio(res.data.pop().url);
+        //         }
+        //     }
+        // });
     }
 
     function initAudio(src) {
