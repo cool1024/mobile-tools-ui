@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="./../../../resource/css/index.css">
     <link rel="stylesheet" href="./../../../resource/font/iconfont.css">
     <style>
+        .iconfont {
+            font-size: 1.2rem;
+        }
+
         .view-content,
         .view-footbar {
             background-color: rgba(0, 0, 0, 0.49);
@@ -156,6 +160,20 @@
             width: 100%;
             bottom: 0;
         }
+
+        .popup-content {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        .popup-title {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .playlist-item {
+            line-height: 3rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -164,11 +182,13 @@
     <div class="music-background h-100 w-100 __background__"></div>
     <div class="view">
         <div class="view-content">
-            <div class="music-headbar text-white flex-center p-2 text-truncate">
+            <div class="music-headbar text-white flex-between p-2 text-truncate">
+                <a onclick="window.history.back()" class="iconfont icon-i-back text-white"></a>
                 <div>
                     <div class="__name__">歌曲名称</div>
                     <div class="font-size-sm text-muted __author__">作者</div>
                 </div>
+                <div></div>
             </div>
             <div class="music-needle">
                 <img class="__needle__" src="../../../resource/images/play_needle.png">
@@ -201,8 +221,37 @@
             <div class="play-icon circle mr-4 __next__">
                 <i class="iconfont icon-next"></i>
             </div>
-            <div class="play-menu">
+            <div class="play-menu __menu__">
                 <i class="iconfont icon-category"></i>
+            </div>
+        </div>
+    </div>
+    <div class="popup popup-default" style="display: none">
+        <div class="popup-content bg-white">
+            <div class="popup-title p-3 text-secondary flex-between align-items-center">
+                <div>
+                    <i class="iconfont icon-refresh"></i>
+                    <span>列表循环(173)</span>
+                </div>
+                <div>
+                    <i class="iconfont icon-folder"></i>
+                    <span>收藏全部</span>
+                    <i class="ml-3 iconfont icon-delete"></i>
+                </div>
+            </div>
+            <div class="bg-white p-2">
+                <div class="playlist-item flex text-truncate align-items-center">
+                    <span>write recollection</span>
+                    <small class="text-muted">-总天涯一直</small>
+                </div>
+                <div class="playlist-item flex text-truncate align-items-center">
+                    <span>write recollection</span>
+                    <small class="text-muted">-总天涯一直</small>
+                </div>
+                <div class="playlist-item flex text-truncate align-items-center">
+                    <span>write recollection</span>
+                    <small class="text-muted">-总天涯一直</small>
+                </div>
             </div>
         </div>
     </div>
@@ -217,6 +266,10 @@
     var playStatus = 'load';// load,ready,play,pause,error
 
     var audio = new Audio();
+
+    $('.__menu__').click(() => {
+        $('.popup').show();
+    });
 
     $('.__play_').click(function () {
         if (playStatus === 'ready' || playStatus === 'pause') {
@@ -257,31 +310,16 @@
                 }
             }
         });
-
-        // $.ajax({
-        //     url: 'http://www.cool1024.com:3000/music/url?timestamp=' + new Date().getTime(),
-        //     dataType: 'json',
-        //     data: { id: ids, br: 320000 },
-        //     type: 'post',
-        //     success: function (res) {
-        //         if (res.code === 200) {
-        //             initAudio(res.data.pop().url);
-        //         }
-        //     }
-        // });
     }
 
     function initAudio(src) {
 
         audio.src = src;
 
-        // audio.preload = 'auto';
-
         audio.oncanplay = function () {
             playStatus = 'ready';
-            setPlay();
+            // setPlay();
         };
-        // listenAudioState();
 
         audio.onerror = function () {
             playStatus = 'error';
@@ -290,12 +328,6 @@
         audio.onended = function () {
             setNext();
         }
-    }
-
-    function listenAudioState() {
-        setInterval(function () {
-            alert(audio.readyState);
-        }, 1000);
     }
 
     function fillView(datas) {
