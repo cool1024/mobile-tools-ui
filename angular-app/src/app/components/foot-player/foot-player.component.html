@@ -1,0 +1,36 @@
+<div class="view-footbar bg-white">
+    <div class="w-100 h-100 flex align-items-center p-1">
+        <img style="height:100%;" src="http://p1.music.126.net/_1HDZcJ-wDEtwkZ1cYqRbA==/3254554427603674.jpg">
+        <div class="flex-between align-items-center pl-2 w-100">
+            <div>
+                <div class="font-size-sm mb-2">歌曲名称</div>
+                <div class="font-size-sm text-muted">横滑可以上下切换歌曲哦</div>
+            </div>
+            <div>
+                <i class="iconfont icon-play mr-3"></i>
+                <i (click)="showPlayList=!showPlayList" class="iconfont icon-category mr-1"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showPlayList" class="popup popup-default">
+    <div class="popup-content bg-white">
+        <div class="popup-title p-3 text-secondary flex-between align-items-center">
+            <div>
+                <i class="iconfont icon-refresh mr-2"></i>
+                <span>列表循环({{plays.length}})</span>
+            </div>
+            <div>
+                <i class="iconfont icon-folder mr-2"></i>
+                <span>收藏全部</span>
+                <span (click)="showPlayList=false" class="ml-4 text-danger">关闭</span>
+            </div>
+        </div>
+        <div class="bg-white pl-2 pr-2 pb-2" style="max-height: 300px;overflow-y: auto;">
+            <div *ngFor="let music of audio.playList" class="playlist-item flex text-truncate align-items-center">
+                <span>{{music.name}}</span>
+                <small class="text-muted">-{{music.ar[0].name}}</small>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="view">
+    <div class="view-headbar bg-danger pl-3 pr-3">
+        <i class="iconfont icon-menu"></i>
+        <div class="headbar-title flex-center align-items-center ml-4 mr-4">
+            <!-- <i class="iconfont icon-music"></i> -->
+            <span>音乐</span>
+        </div>
+        <i class="iconfont icon-search"></i>
+    </div>
+    <div class="view-content">
+        <div class="bg-danger" style="height: 200px;">
+            <app-tabs [tabs]="['推荐','朋友','电台']" color="white" [target]="tabs" activeTab="推荐"></app-tabs>
+            <div appTabs #tabs='appTabs'>
+                <div appTab tab='推荐'>
+                    <div>
+                        <div class="loop-container p-3">
+                            <div class="loop-card">
+                                <img class="w-100 round" src="https://picsum.photos/800/400/?100">
+                            </div>
+                            <div class="loop-card"></div>
+                            <div class="loop-card"></div>
+                        </div>
+                    </div>
+                    <div class="flex-around pb-3" style="border-bottom:1px solid rgba(0,0,0,.1)">
+                        <div class="">
+                            <div class="bg-danger circle">
+                                <i class="iconfont icon-shouyinji"></i>
+                            </div>
+                            <div class="text-dark text-center mt-1">电台</div>
+                        </div>
+                        <div routerLink="/recommand">
+                            <div class="bg-danger circle">
+                                <i class="iconfont icon-calendar"></i>
+                            </div>
+                            <div class="text-dark text-center mt-1">推荐</div>
+                        </div>
+                        <div>
+                            <div class="bg-danger circle">
+                                <i class="iconfont icon-music"></i>
+                            </div>
+                            <div class="text-dark text-center mt-1">歌单</div>
+                        </div>
+                        <div>
+                            <div class="bg-danger circle">
+                                <i class="iconfont icon-paixing"></i>
+                            </div>
+                            <div class="text-dark text-center mt-1">排行</div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <div class="p-2">
+                            <span class="text-dark">推荐歌单</span>
+                            <i class="iconfont icon-back-reverse"></i>
+                        </div>
+                        <div class="flex-around flex-wrap text-dark mt-2">
+                            <div *ngFor="let recommand of recommands" class="p-1" style="min-width:25%;width: 33%;">
+                                <img class="w-100" [src]="recommand.picUrl" alt="">
+                                <div>{{recommand.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div appTab tab='朋友'>第二个内容</div>
+                <div appTab tab='电台'>第三个内容</div>
+            </div>
+        </div>
+    </div>
+    <div class="view-footbar"></div>
+</div>

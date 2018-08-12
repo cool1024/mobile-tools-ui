@@ -1,0 +1,29 @@
+* {
+    font-size: 0.9rem;
+}
+
+small {
+    font-size: 0.8rem;
+}
+
+.iconfont {
+    font-size: 1.5rem;
+}
+
+.popup .iconfont {
+    font-size: 1rem;
+}
+
+.popup-content {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.popup-title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.playlist-item {
+    line-height: 3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}

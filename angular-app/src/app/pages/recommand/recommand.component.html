@@ -1,0 +1,55 @@
+<div class="view">
+    <div class="view-headbar bg-dark">
+        <div class="headbar-title pl-2 pr-2 flex align-items-center">
+            <a routerLink="/home" class="iconfont icon-i-back text-white"></a>
+            <span class="ml-2">每日推荐</span>
+        </div>
+    </div>
+    <div class="view-content bg-dark">
+        <div class="flex-start p-4">
+            <div>
+                <h6>推荐给我的音乐</h6>
+                <div class="flex align-items-center">
+                    <img class="img-circle __avatarUrl__" width="30" height="30" [src]="user.avatarUrl" alt="头像">
+                    <span class="font-size-sm ml-2 __nickname__">{{user.nickname}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex-around mt-3">
+            <div class="text-center">
+                <i class="iconfont icon-comments"></i>
+                <div class="mt-1 font-size-sm">评论</div>
+            </div>
+            <div class="text-center">
+                <i class="iconfont icon-share"></i>
+                <div class="mt-1 font-size-sm">分享</div>
+            </div>
+            <div class="text-center">
+                <i class="iconfont icon-download"></i>
+                <div class="mt-1 font-size-sm">下载</div>
+            </div>
+            <div class="text-center">
+                <i class="iconfont icon-checkbox"></i>
+                <div class="mt-1 font-size-sm">多选</div>
+            </div>
+        </div>
+        <div class="playlist bg-white mt-4 pb-2">
+            <div class="p-2 text-secondary flex align-items-center">
+                <i class="iconfont icon-videoplay"></i>
+                <span class="ml-2">播放全部(共{{recommends.length}}首)</span>
+            </div>
+            <div *ngFor="let recommend of recommends;index as i" (click)="playMusic(i)" class="flex-center align-items-center p-2 pointer">
+                <img class="flex-shrink-0" width="40" height="40" [src]="recommend.album.picUrl">
+                <div class="flex-grow-1 flex-shrink-1 text-truncate ml-2">
+                    <div class="text-truncate">{{recommend.name}}</div>
+                    <div class="font-size-sm mt-2 text-muted">{{recommend.artists[0].name}}</div>
+                </div>
+                <div class="text-muted flex-shrink-0">
+                    <i class="iconfont icon-icon_videoplay mr-2"></i>
+                    <i class="iconfont icon-more"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="view-footbar"></div>
+</div>
