@@ -146,6 +146,7 @@
 <script src="./../../../resource/js/jquery.min.js"></script>
 <script>
     var cookie = localStorage.getItem('cookie'), playList = [], cookieStr = '';
+    console.log(cookie);
     cookie = cookie && JSON.parse(cookie);
     cookie.forEach(function (str, index) {
         cookie[index] = str.split(';')[0];
@@ -168,7 +169,7 @@
                         id: media.id,
                         name: media.name,
                         picUrl: media.al.picUrl,
-                        arName: media.ar.pop().name,
+                        arName: media.ar[0].name,
                     }, index);
                 });
                 playList = res.playlist.tracks;
