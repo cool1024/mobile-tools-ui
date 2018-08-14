@@ -12,12 +12,13 @@ import { TabDirective, TabsDirective } from './components/tab/tab.directive';
  */
 import { HomeComponent } from './pages/home/home.component';
 import { RecommandComponent } from './pages/recommand/recommand.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
 
     // 此处设置网站首页
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'recommand', component: RecommandComponent },
 
@@ -33,6 +34,7 @@ const components = [
 ];
 
 const pages = [
+    LoginComponent,
     HomeComponent,
     RecommandComponent,
 ];

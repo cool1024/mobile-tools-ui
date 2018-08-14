@@ -23,7 +23,6 @@ export class RecommandComponent implements OnInit {
         });
         const user = JSON.parse(localStorage.getItem('user') || '{}');
         this.user = user.profile;
-        console.log(this.user);
     }
 
     /**
@@ -31,7 +30,9 @@ export class RecommandComponent implements OnInit {
      */
     playMusic(index: number) {
         console.log(index);
-        this.audio.playList = this.recommends;
+        this.audio.playList = this.recommends.map(recommend => {
+            return { id: recommend.id, ar: recommend.artists, name: recommend.name, picUrl: recommend.album.picUrl };
+        });
         this.audio.playMusic(index);
     }
 

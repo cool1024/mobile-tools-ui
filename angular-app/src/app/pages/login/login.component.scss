@@ -1,0 +1,26 @@
+.form-control {
+    height: 3rem;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+.form-control .form-control-label {
+    color: gray;
+    margin-right: 0.25rem;
+}
+
+.form-control input {
+    flex-grow: 1;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-login {
+    line-height: 1.5;
+    border-radius: 3rem;
+}
+
+.btn-login:disabled {
+    opacity: 0.5;
+}

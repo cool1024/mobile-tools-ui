@@ -10,6 +10,8 @@ import { RequestService } from './request.service';
 @Injectable()
 export class AudioService {
 
+    hidden = false;
+
     audio: HTMLAudioElement;
 
     playStatus = 'load'; // load,ready,play,pause,error

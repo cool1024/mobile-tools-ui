@@ -1,2 +1,2 @@
 <router-outlet></router-outlet>
-<app-foot-player class="position-fixed bottom w-100"></app-foot-player>
+<app-foot-player class="position-fixed bottom w-100" *ngIf="!audio.hidden"></app-foot-player>

@@ -26,7 +26,7 @@ export class RequestService {
      */
     send(url: string, params: any): Observable<any> {
         let cookie: any = localStorage.getItem('cookie');
-        cookie = cookie && JSON.parse(cookie);
+        cookie = (cookie && JSON.parse(cookie)) || [];
         cookie.forEach(function (str, index) {
             cookie[index] = str.split(';')[0];
         });
