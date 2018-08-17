@@ -45,6 +45,11 @@ export class TabComponent implements AfterViewInit {
         return this.tabItems.toArray().map(item => item.nativeElement);
     }
 
+    moveHandle = () => {
+        const activeIndex = this.tabs.indexOf(this.activeTab);
+        this.moveActiveBar(activeIndex);
+    };
+
     constructor() { }
 
     ngAfterViewInit() {
@@ -53,6 +58,7 @@ export class TabComponent implements AfterViewInit {
         }
         const activeIndex = this.tabs.indexOf(this.activeTab);
         setTimeout(() => activeIndex > -1 && this.moveActiveBar(activeIndex));
+        window.addEventListener('resize', this.moveHandle);
     }
 
     changeTab(tab: string, i: number = null) {
@@ -71,5 +77,9 @@ export class TabComponent implements AfterViewInit {
         this.offsetLeft = 0;
         this.offsetLeft += tabs[i].offsetLeft;
         this.tabBarWidth = tabs[i].clientWidth;
+    }
+
+    ngDestroy() {
+        window.removeEventListener('resize', this.moveHandle);
     }
 }

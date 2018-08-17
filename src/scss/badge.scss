@@ -1,0 +1,16 @@
+//
+// button config
+//
+
+.badge {
+    padding: 6px 9px;
+    font-size: $font-size-sm;
+    border-radius: 1rem;
+}
+
+@each $name, $color in $btn-colors {
+    .badge-#{$name} {
+        background: linear-gradient(to left, $color, rgba($color, 0.8));
+        color: color-yiq($color);
+    }
+}

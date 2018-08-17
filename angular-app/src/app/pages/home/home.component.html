@@ -8,8 +8,10 @@
         <i class="iconfont icon-search"></i>
     </div>
     <div class="view-content">
-        <div class="bg-danger" style="height: 200px;">
-            <app-tabs [tabs]="['推荐','朋友','电台']" color="white" [target]="tabs" activeTab="推荐"></app-tabs>
+        <div>
+            <div class="bg-danger">
+                <app-tabs [tabs]="['推荐','朋友','电台']" color="white" [target]="tabs" activeTab="朋友"></app-tabs>
+            </div>
             <div appTabs #tabs='appTabs'>
                 <div appTab tab='推荐'>
                     <div>
@@ -60,7 +62,34 @@
                         </div>
                     </div>
                 </div>
-                <div appTab tab='朋友'>第二个内容</div>
+                <div appTab tab='朋友'>
+                    <div *ngFor="let event of events" class="card m-2 p-2">
+                        <div class="flex">
+                            <img class="img-circle mr-2" height="40" [src]="event.user.avatarUrl" alt="头像">
+                            <div class="flex-between flex-grow-1">
+                                <div>
+                                    <div class="text-primary">{{event.user.nickname}}</div>
+                                    <div class="text-muted">
+                                        <small>刚刚</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="badge badge-danger">+ 关注</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-dark">
+                            <div>
+                                <pre>{{event.json.msg}}</pre>
+                            </div>
+                            <!-- {{event.json|json}} -->
+                            <div *ngIf="event.json.video">
+                                <img [src]="event.json.video.coverUrl" style="width:100%">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
                 <div appTab tab='电台'>第三个内容</div>
             </div>
         </div>

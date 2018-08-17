@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit {
     // 推荐歌单
     recommands = new Array<any>();
 
+    // 动态消息
+    events = new Array<any>();
+
     constructor(
         private request: RequestService,
     ) { }
@@ -22,6 +25,20 @@ export class HomeComponent implements OnInit {
         });
         this.request.send('/user/detail', { uid: 108651695 }).subscribe(res => {
             localStorage.setItem('user', JSON.stringify(res));
+        });
+        this.request.send('/event', {}).subscribe(res => {
+            this.events = res.event;
+            this.events = this.events.map(event => {
+                event.json = JSON.parse(event.json);
+                return event;
+            });
+        });
+        this.request.send('/program/recommend', {}).subscribe(res => {
+            this.events = res.event;
+            this.events = this.events.map(event => {
+                event.json = JSON.parse(event.json);
+                return event;
+            });
         });
     }
 
