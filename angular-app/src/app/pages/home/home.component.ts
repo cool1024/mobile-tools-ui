@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
     // 动态消息
     events = new Array<any>();
 
+    // 电台推荐
+    programs = new Array<any>();
+
     constructor(
         private request: RequestService,
     ) { }
@@ -33,12 +36,9 @@ export class HomeComponent implements OnInit {
                 return event;
             });
         });
-        this.request.send('/program/recommend', {}).subscribe(res => {
-            this.events = res.event;
-            this.events = this.events.map(event => {
-                event.json = JSON.parse(event.json);
-                return event;
-            });
+        this.request.send('/personalized/djprogram', {}).subscribe(res => {
+            this.programs = res.result;
+            console.log(this.programs);
         });
     }
 
