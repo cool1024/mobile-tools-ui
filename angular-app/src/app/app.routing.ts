@@ -13,6 +13,7 @@ import { TabDirective, TabsDirective } from './components/tab/tab.directive';
 import { HomeComponent } from './pages/home/home.component';
 import { RecommandComponent } from './pages/recommand/recommand.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PlayComponent } from './pages/play/play.component';
 
 const routes: Routes = [
 
@@ -20,8 +21,10 @@ const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'recommand', component: RecommandComponent },
-
+    {
+        path: 'recommand', component: RecommandComponent,
+        children: [{ path: 'play/:id', component: PlayComponent }]
+    }
     // 最后全局匹配其他链接
     // { path: '**', redirectTo: 'dashboard/error', pathMatch: 'full' },
 ];
@@ -37,6 +40,7 @@ const pages = [
     LoginComponent,
     HomeComponent,
     RecommandComponent,
+    PlayComponent,
 ];
 
 export const declarationsComponents = [...components, ...pages];

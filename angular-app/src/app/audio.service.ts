@@ -79,4 +79,27 @@ export class AudioService {
         }
         this.loadMusic(this.playList[this.activeMusicIndex].id);
     }
+
+    get activeMusic() {
+        if (this.activeMusicIndex >= 0) {
+            if (this.playList[this.activeMusicIndex]) {
+                return {
+                    id: this.playList[this.activeMusicIndex].id,
+                    name: this.playList[this.activeMusicIndex].name,
+                    picUrl: this.playList[this.activeMusicIndex].picUrl,
+                    author: this.playList[this.activeMusicIndex].ar[0].name
+                };
+            } else {
+                return {
+                    picUrl: 'assets/images/placeholder_disk_play_song.png',
+                    name: '歌曲名称'
+                };
+            }
+        } else {
+            return {
+                picUrl: 'assets/images/placeholder_disk_play_song.png',
+                name: '歌曲名称'
+            };
+        }
+    }
 }

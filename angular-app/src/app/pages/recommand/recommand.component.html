@@ -1,4 +1,4 @@
-<div class="view">
+<div class="view" [class.d-none]="outlet.isActivated">
     <div class="view-headbar bg-dark">
         <div class="headbar-title pl-2 pr-2 flex align-items-center">
             <a routerLink="/home" class="iconfont icon-i-back text-white"></a>
@@ -53,3 +53,6 @@
     </div>
     <div class="view-footbar"></div>
 </div>
+<app-foot-player [class.d-none]="outlet.isActivated" class="position-fixed bottom w-100"></app-foot-player>
+
+<router-outlet #outlet="outlet"></router-outlet>

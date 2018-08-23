@@ -1,9 +1,9 @@
 <div class="view-footbar bg-white">
     <div class="w-100 h-100 flex align-items-center p-1">
-        <img style="height:100%;" [src]="activeMusic.picUrl">
+        <img style="height:100%;" [src]="audio.activeMusic.picUrl">
         <div class="flex-between align-items-center pl-2 w-100">
-            <div>
-                <div class="font-size-sm mb-2">{{activeMusic.name}}</div>
+            <div routerLink="play/{{audio.activeMusic.id}}">
+                <div class="font-size-sm mb-2">{{audio.activeMusic.name}}</div>
                 <div class="font-size-sm text-muted">横滑可以上下切换歌曲哦</div>
             </div>
             <div>

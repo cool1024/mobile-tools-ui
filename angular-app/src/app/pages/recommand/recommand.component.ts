@@ -29,7 +29,6 @@ export class RecommandComponent implements OnInit {
      * 播放音乐
      */
     playMusic(index: number) {
-        console.log(index);
         this.audio.playList = this.recommends.map(recommend => {
             return { id: recommend.id, ar: recommend.artists, name: recommend.name, picUrl: recommend.album.picUrl };
         });

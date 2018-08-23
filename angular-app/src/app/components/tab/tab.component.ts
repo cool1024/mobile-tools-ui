@@ -48,7 +48,7 @@ export class TabComponent implements AfterViewInit {
     moveHandle = () => {
         const activeIndex = this.tabs.indexOf(this.activeTab);
         this.moveActiveBar(activeIndex);
-    };
+    }
 
     constructor() { }
 
