@@ -16,7 +16,7 @@ A tool ui for mobile.
 11. Load More
 
 ## preview
-![preview/card.png](preview/card.png)
+![preview/card.png](preview/preview.png)
 
 ## install
 `npm install`
