@@ -1,0 +1,23 @@
+$img-enable-radius: $enable-radius;
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.img-thumb {
+    border: 1px solid $light;
+    padding: map-get($spacers, 1);
+    background-color: $white;
+
+    @if $img-enable-radius {
+        border-radius: $border-radius;
+    }
+}
+
+.img-thumb-circle, .img-circle-thumb {
+    @extend .img-circle;
+
+    background-color: $white;
+    border: 1px solid $light;
+    padding: map-get($spacers, 1);
+}

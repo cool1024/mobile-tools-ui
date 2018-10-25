@@ -1,0 +1,54 @@
+//
+// button config
+//
+$card-enable-radius: $enable-radius;
+$card-enable-shadow: $enable-shadow;
+$card-line-height: $line-height;
+$card-media-thumb-width: 40%;
+
+.card {
+    background-color: $white;
+    overflow: hidden;
+    line-height: $card-line-height;
+
+    @if $card-enable-radius {
+        border-radius: $border-radius;
+    }
+
+    @if $card-enable-shadow {
+        box-shadow: $box-shadow-sm;
+    }
+}
+
+.card-block {
+    padding: map-get($spacers, 3);
+}
+
+.card-block {
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
+}
+
+.card-media {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.card-media-thumb {
+    max-width: $card-media-thumb-width;
+}
+
+.card-media-content {
+    flex-grow: 1;
+    padding: map-get($spacers, 2);
+    width: 100% - $card-media-thumb-width;
+}
+
+.card-media-content {
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

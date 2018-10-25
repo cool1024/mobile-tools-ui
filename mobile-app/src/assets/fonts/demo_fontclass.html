@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>IconFont</title>
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="iconfont.css">
+</head>
+<body>
+    <div class="main markdown">
+        <h1>IconFont 图标</h1>
+        <ul class="icon_lists clear">
+            
+                <li>
+                <i class="icon iconfont icon-back"></i>
+                    <div class="name">back</div>
+                    <div class="fontclass">.icon-back</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-time"></i>
+                    <div class="name">time</div>
+                    <div class="fontclass">.icon-time</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-schoolfuzhi"></i>
+                    <div class="name">school_复制</div>
+                    <div class="fontclass">.icon-schoolfuzhi</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-bangbangtang"></i>
+                    <div class="name">棒棒糖</div>
+                    <div class="fontclass">.icon-bangbangtang</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-caomei"></i>
+                    <div class="name">草莓</div>
+                    <div class="fontclass">.icon-caomei</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-hamigua"></i>
+                    <div class="name">哈密瓜</div>
+                    <div class="fontclass">.icon-hamigua</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-chengzi"></i>
+                    <div class="name">橙子</div>
+                    <div class="fontclass">.icon-chengzi</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-ningmeng"></i>
+                    <div class="name">柠檬</div>
+                    <div class="fontclass">.icon-ningmeng</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-qingpingguo"></i>
+                    <div class="name">青苹果</div>
+                    <div class="fontclass">.icon-qingpingguo</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-xigua"></i>
+                    <div class="name">西瓜</div>
+                    <div class="fontclass">.icon-xigua</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-xihongshi"></i>
+                    <div class="name">西红柿</div>
+                    <div class="fontclass">.icon-xihongshi</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-More"></i>
+                    <div class="name">More</div>
+                    <div class="fontclass">.icon-More</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-color"></i>
+                    <div class="name">color</div>
+                    <div class="fontclass">.icon-color</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-book"></i>
+                    <div class="name">book</div>
+                    <div class="fontclass">.icon-book</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont icon-address"></i>
+                    <div class="name">address</div>
+                    <div class="fontclass">.icon-address</div>
+                </li>
+            
+        </ul>
+
+        <h2 id="font-class-">font-class引用</h2>
+        <hr>
+
+        <p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。</p>
+        <p>与unicode使用方式相比，具有如下特点：</p>
+        <ul>
+        <li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
+        <li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
+        <li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
+        <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
+        </ul>
+        <p>使用步骤如下：</p>
+        <h3 id="-fontclass-">第一步：引入项目下面生成的fontclass代码：</h3>
+
+
+        <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;link rel="stylesheet" type="text/css" href="./iconfont.css"&gt;</span></code></pre>
+        <h3 id="-">第二步：挑选相应图标并获取类名，应用于页面：</h3>
+        <pre><code class="lang-css hljs">&lt;<span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">class</span>="<span class="hljs-selector-tag">iconfont</span> <span class="hljs-selector-tag">icon-xxx</span>"&gt;&lt;/<span class="hljs-selector-tag">i</span>&gt;</code></pre>
+        <blockquote>
+        <p>"iconfont"是你项目下的font-family。可以通过编辑项目查看，默认是"iconfont"。</p>
+        </blockquote>
+    </div>
+</body>
+</html>

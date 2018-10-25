@@ -1,0 +1,157 @@
+//
+// checkbox
+//
+.checkbox,
+.radio {
+    position: relative;
+    height: 22px;
+}
+
+.checkbox input[type='checkbox'],
+.radio input[type='radio'] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+.checkbox label,
+.radio label {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    height: 22px;
+    line-height: 22px;
+}
+
+.checkbox label:before,
+.radio label:before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+}
+
+.radio label:before {
+    border-radius: 50%;
+}
+
+.checkbox label:after,
+.radio label:after {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: 0;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+    transform: rotate(45deg);
+}
+
+@each $name, $color in $checkbox-colors {
+    .checkbox-#{$name} input[type='checkbox']:checked + label:before,
+    .radio-#{$name} input[type='radio']:checked + label:before {
+        background: $color;
+        border-color: $color;
+    }
+
+    .checkbox-#{$name} input[type='checkbox']:checked + label:after,
+    .radio-#{$name} input[type='radio']:checked + label:after {
+        background: $color;
+    }
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.switch * {
+    pointer-events: none;
+}
+
+.switch-label {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.switch-label:empty {
+    margin-left: 0;
+}
+
+.switch-core {
+    display: inline-block;
+    position: relative;
+    width: 47px;
+    height: 27px;
+    border: 1px solid #d9d9d9;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background: #d9d9d9;
+}
+
+.switch-core:after, .switch-core:before {
+    content: " ";
+    top: 0;
+    left: 0;
+    position: absolute;
+    transition: transform .3s;
+    border-radius: 15px;
+}
+
+.switch-core:after {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.switch-core:before {
+    width: 45px;
+    height: 25px;
+    background-color: #fdfdfd;
+}
+
+.switch-input {
+    display: none;
+}
+
+@each $name, $color in $checkbox-colors {
+    .switch-#{$name} .switch-input:checked + .switch-core {
+        border-color: $color;
+        background-color: $color;
+    }
+}
+
+.switch-input:checked + .switch-core:before {
+    transform: scale(0);
+}
+
+.switch-input:checked + .switch-core:after {
+    transform: translateX(20px);
+}
+
+.spinner-snake {
+    animation: spinner-rotate .8s infinite linear;
+    border: 4px solid transparent;
+    border-radius: 50%;
+}
+
+@keyframes spinner-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}

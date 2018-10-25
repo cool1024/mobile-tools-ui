@@ -1,0 +1,46 @@
+.popup {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($dark, 0.4);
+}
+
+.popup-content {
+    @extend .animated;
+
+    @extend .slideInUp;
+
+    align-self: flex-end;
+    width: 100%;
+}
+
+.popup-title {
+    position: relative;
+}
+
+.popup-close {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    display: flex;
+}
+
+.popup-close > * {
+    align-self: center;
+}
+
+.popup-sheet-item {
+    padding: map-get($spacers, 3);
+}
+
+.popup-sheet-item:active {
+    background-color: $light;
+}
+
+.popup-sheet-line {
+    background-color: $gray-300;
+    height: 1px;
+}

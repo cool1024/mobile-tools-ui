@@ -1,0 +1,34 @@
+<div class="view position-absolute">
+    <div class="view-headbar view-headbar-fixed bg-white">
+        <h4 class="headbar-title text-center">Home</h4>
+    </div>
+    <div class="view-content pl-2 pr-2 pb-2">
+        <div class="card mt-2" *ngFor="let card of cards">
+            <img class="w-100" src="{{card.cardImage}}">
+            <div class="card-block">
+                <h4>{{card.cardTitle}}</h4>
+                <div class="text-gray">{{card.cardSubject}}</div>
+                <div class="flex-around">
+                    <button class="btn-text text-danger" type="button">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-bangbangtang"></use>
+                        </svg>
+                        <span>Favorite</span>
+                    </button>
+                    <button class="btn-text text-warning" type="button">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-ningmeng"></use>
+                        </svg>
+                        <span>Listen</span>
+                    </button>
+                    <button class="btn-text text-success" type="button">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-qingpingguo"></use>
+                        </svg>
+                        <span>Share</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

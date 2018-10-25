@@ -1,0 +1,45 @@
+/** tab **/
+@each $name, $color in $tab-colors {
+    .nav-link-#{$name}.active {
+        border-top: 3px solid $color !important;
+        color: $color !important;
+    }
+
+    .tabs-#{$name} .tab-bar {
+        background-color: $color;
+    }
+
+    .tabs-#{$name} .tab:hover {
+        color: $color;
+        background-color: rgba($color, 0.1);
+    }
+
+    .tabs-#{$name} .tab.active {
+        color: $color;
+    }
+}
+
+.tabs {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+    padding: 12px 16px;
+    cursor: pointer;
+    position: relative;
+    transition: color ease-in-out 0.3s;
+}
+
+.tab-bar {
+    position: absolute;
+    height: 2px;
+    width: 0px;
+    bottom: -1px;
+    left: 0;
+    transition: all ease-in-out 0.3s;
+}

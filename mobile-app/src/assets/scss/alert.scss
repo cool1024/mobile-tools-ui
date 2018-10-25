@@ -1,0 +1,38 @@
+.alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    background-color: rgba($dark, 0.4);
+}
+
+.alert.active {
+    display: flex;
+}
+
+.alert-dialog {
+    @extend .animated;
+
+    @extend .slideInUp;
+
+    align-self: center;
+    width: 80%;
+    box-shadow: $box-shadow;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: map-get($spacers, 2);
+    }
+}
+
+.alert-content {
+    line-height: $line-height;
+}
+
+.alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: map-get($spacers, 3);
+}

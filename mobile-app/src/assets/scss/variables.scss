@@ -1,0 +1,100 @@
+//
+// global enable
+//
+$enable-radius: false;
+$enable-shadow: true;
+
+//
+// color item
+//
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// base color
+$white: #fff;
+$light: $gray-200;
+$dark: #000;
+$muted: $gray-500;
+$gray: $gray-800;
+
+// main color
+$primary: #007bff;
+$info: #17a2b8;
+$danger: #f24644;
+$warning: #ffc107;
+$success: #28a745;
+
+// more color
+$pink: #e83e8c;
+$orange: #fd7e14;
+
+//
+// color array
+//
+$colors: map-merge(("white": $white, "light": $light, "muted": $muted, "gray": $gray, "dark": $dark), ());
+$main-colors: ("primary": $primary, "info": $info, "danger": $danger, "warning": $warning, "success": $success);
+$btn-colors: ("white": $white, "dark": $dark, "danger": $danger, "warning": $warning, "success": $success);
+$checkbox-colors: $btn-colors;
+$tab-colors: ("white": $white);
+$bg-colors: map-merge(("danger": $danger), $colors);
+
+$text-colors: map-merge($main-colors, $colors);
+
+//
+// other about color
+//
+$yiq-contrasted-threshold: 150 !default;
+
+//
+// r-l-t-b
+//
+$rltb: ("r": "right", "l": "left", "t": "top", "b": "bottom");
+
+//
+// space
+//
+$spacer: 1rem;
+$spacers: map-merge(("none": 0 !important, 0: 0 !important, 1: $spacer * 0.25, 2: $spacer * 0.5, 3: $spacer, 4: $spacer * 1.5, 5: $spacer * 2), ());
+
+// size leves
+$sizes: 50, 100;
+
+//
+// radius
+//
+$border-radius: 0.25rem;
+
+//
+// font
+//
+$font-size: 1rem;
+$font-size-sm: $font-size * 0.8;
+$font-size-lg: $font-size * 1.5;
+
+$font-weight: 300;
+$font-weight-sm: $font-weight - 100;
+$font-weight-lg: $font-weight + 100;
+
+$font-normal: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-other: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+$line-height: 1.4;
+$line-height-sm: 1.2;
+$line-height-lg: 1.8;
+
+//
+// shadow
+//
+$box-shadow: 0 0.5rem 1rem rgba($dark, 0.15);
+$box-shadow-sm: 0 0.125rem 0.25rem rgba($dark, 0.075);
+$box-shadow-lg: 0 1rem 3rem rgba($dark, 0.175);
+$box-shadow-reverse: 0 -0.5rem 1rem rgba($dark, 0.15);
+$box-shadow-reverse-sm: 0 -0.125rem 0.25rem rgba($dark, 0.075);
+$box-shadow-reverse-lg: 0 -1rem 3rem rgba($dark, 0.175);

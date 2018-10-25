@@ -1,0 +1,229 @@
+//
+// backgournd-color
+//
+@each $name, $color in $bg-colors {
+    .bg-#{$name} {
+        background-color: $color;
+        color: color-yiq($color);
+    }
+}
+
+//
+// text-color
+//
+@each $name, $color in $text-colors {
+    .text-#{$name} {
+        color: $color;
+    }
+
+    .text-indent {
+        text-indent: $font-size * 2;
+    }
+}
+
+//
+// text-overflow
+//
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.line-height-normal {
+    line-height: 1.5;
+}
+
+.line-height-sm {
+    line-height: 1;
+}
+
+.line-height-lg {
+    line-height: 2;
+}
+
+.font-size-normal {
+    font-size: $font-size;
+}
+
+.font-size-sm {
+    font-size: $font-size-sm;
+}
+
+.font-size-lg {
+    font-size: $font-size-lg;
+}
+
+//
+// space
+//
+@each $number, $space in $spacers {
+    .p-#{$number} {
+        padding: $space;
+    }
+
+    @each $key, $value in $rltb {
+        .p#{$key}-#{$number} {
+            padding-#{$value}: $space;
+        }
+    }
+
+    .p-auto {
+        padding: auto;
+    }
+
+    .m-#{$number} {
+        margin: $space;
+    }
+
+    .m-auto {
+        margin: auto;
+    }
+
+    @each $key, $value in $rltb {
+        .m#{$key}-#{$number} {
+            margin-#{$value}: $space;
+        }
+    }
+}
+
+//
+// border radius
+//
+.round {
+    border-radius: $border-radius;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+//
+// size
+//
+@each $value in $sizes {
+    .w-#{$value} {
+        width: #{$value + "%"};
+    }
+
+    .h-#{$value} {
+        height: #{$value + "%"};
+    }
+}
+
+//
+// flex
+//
+.flex {
+    display: flex;
+}
+
+.flex-around {
+    @extend .flex;
+
+    justify-content: space-around;
+}
+
+.flex-between {
+    @extend .flex;
+
+    justify-content: space-between;
+}
+
+.flex-start {
+    @extend .flex;
+
+    justify-content: start;
+}
+
+.flex-end {
+    @extend .flex;
+
+    justify-content: end;
+}
+
+.flex-center {
+    @extend .flex;
+
+    justify-content: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
+.align-content-start {
+    align-content: flex-start;
+}
+
+.align-content-end {
+    align-content: flex-end;
+}
+
+.align-content-center {
+    align-content: center;
+}
+
+.align-content-between {
+    align-content: space-between;
+}
+
+.align-content-around {
+    align-content: space-around;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-shrink-1 {
+    flex-shrink: 1;
+}
+
+.flex-grow-0 {
+    flex-grow: 0;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.visable {
+    visibility: visible;
+}
+
+.invisable {
+    visibility: hidden;
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
