@@ -1,0 +1,7 @@
+.bar-item {
+    filter: grayscale(1);
+}
+
+.active {
+    filter: grayscale(0) !important;
+}

@@ -1,23 +1,26 @@
 /**
- * 请编写路由文件说明
+ * 示例路由文件
  *
- * @author 填写作者
+ * @author cool024
  * @file   demo.routing.ts
  * @date   2018-10-25 16:55:57
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { ListComponent } from './pages/list/list.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'list', component: ListComponent },
 ];
 
 /**
  * 指令、组件、管道声明
  */
 export const declarationComponents = [
-    HomeComponent
+    HomeComponent,
+    ListComponent,
 ];
 
 /**

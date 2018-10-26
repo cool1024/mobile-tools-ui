@@ -1,0 +1,35 @@
+.iconfont {
+    font-size: 1.2rem;
+}
+
+.view-footbar .iconfont {
+    font-size: 1.5rem;
+}
+
+.playlist {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.playlist .playlist-header {
+    line-height: 2;
+}
+
+.playlist .playlist-header,
+.playlist .music-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.playlist .music-item {
+    width: calc(100% - 40px);
+}
+
+.playlist .music-icon {
+    width: 30px;
+    text-align: center;
+    display: block;
+}
+
+.playlist .music-text {
+    width: calc(100% - 4rem);
+}
